@@ -95,14 +95,11 @@
       }
 
       main {
-        display: grid;
-        grid-template-columns: minmax(0, 1.65fr) minmax(51mm, 0.78fr);
-        gap: 10mm;
-        padding-top: 5mm;
+        padding-top: 5.5mm;
       }
 
       section {
-        margin-bottom: 5mm;
+        margin-bottom: 5.5mm;
       }
 
       h2 {
@@ -151,6 +148,13 @@
         font-weight: 700;
       }
 
+      .job ul {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        column-gap: 10mm;
+        row-gap: 0.4mm;
+      }
+
       ul {
         margin: 0;
         padding-left: 4.5mm;
@@ -166,13 +170,21 @@
         color: var(--accent);
       }
 
-      aside {
-        border-left: 0.3mm solid var(--line);
-        padding-left: 7mm;
+      .skills-grid {
+        display: grid;
+        grid-template-columns: repeat(6, minmax(0, 1fr));
+        border-top: 0.3mm solid var(--line);
       }
 
       .skill-group {
-        margin-bottom: 3.5mm;
+        grid-column: span 2;
+        margin: 0;
+        padding: 3mm 5mm 3mm 0;
+      }
+
+      .skill-group:nth-child(n + 4) {
+        grid-column: span 3;
+        border-top: 0.3mm solid var(--line);
       }
 
       .skill-group h3,
@@ -191,7 +203,8 @@
       }
 
       .education-item {
-        margin-bottom: 3.5mm;
+        margin: 0;
+        padding-right: 6mm;
       }
 
       .education-item .date {
@@ -199,9 +212,31 @@
         margin-top: 0.8mm;
       }
 
-      .language-list {
+      .education-grid {
         display: grid;
-        gap: 1.2mm;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 6mm;
+        border-top: 0.3mm solid var(--line);
+        padding-top: 3mm;
+      }
+
+      .bottom-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 10mm;
+        margin-bottom: 5mm;
+        border-top: 0.3mm solid var(--line);
+        padding-top: 3.5mm;
+      }
+
+      .bottom-grid section {
+        margin: 0;
+      }
+
+      .language-list {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1.2mm 5mm;
       }
 
       .language-list strong {
@@ -209,8 +244,9 @@
       }
 
       .profile-links {
-        display: grid;
-        gap: 1.6mm;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1.6mm 5mm;
         font-size: 8.1pt;
       }
 
@@ -256,36 +292,34 @@
       </header>
 
       <main>
-        <div>
-          <section aria-labelledby="profile-heading">
-            <h2 id="profile-heading">Perfil profesional</h2>
-            <p class="summary">
-              Software Engineer con experiencia profesional desde 2022 desarrollando y evolucionando aplicaciones web para el sector hotelero. Trabajo en backend, frontend, persistencia e integraciones externas, con especial atención al contexto del producto, la mantenibilidad y la verificación de cada cambio.
-            </p>
-          </section>
+        <section aria-labelledby="profile-heading">
+          <h2 id="profile-heading">Perfil profesional</h2>
+          <p class="summary">
+            Software Engineer con experiencia profesional desde 2022 desarrollando y evolucionando aplicaciones web para el sector hotelero. Trabajo en backend, frontend, persistencia e integraciones externas, con especial atención al contexto del producto, la mantenibilidad y la verificación de cada cambio.
+          </p>
+        </section>
 
-          <section aria-labelledby="experience-heading">
-            <h2 id="experience-heading">Experiencia profesional</h2>
-            <article class="job">
-              <div class="job-heading">
-                <h3>Software Engineer</h3>
-                <span class="date">07/2022 — Actualidad</span>
-              </div>
-              <p class="company">Dingus · Hitt Group</p>
-              <ul>
-                <li>Desarrollo y mantenimiento de un motor de reservas con Django, Python, JavaScript, HTML/Jinja, Sass, CSS, MySQL y Apache.</li>
-                <li>Desarrollo y mantenimiento de un producto para la gestión de canales, hoteles e integraciones con React, Flask y MongoDB.</li>
-                <li>Implementación de integraciones entre proveedores externos mediante flujos de consulta, transformación y envío de datos.</li>
-                <li>Diagnóstico y evolución de aplicaciones existentes, trabajando sobre backend, frontend, bases de datos y comunicación entre sistemas.</li>
-                <li>Trabajo colaborativo con Git y Jira. Desarrollo asistido por IA con Claude CLI desde terminal mediante agentes, skills, ciclos de revisión, controles de seguridad y pruebas.</li>
-              </ul>
-            </article>
-          </section>
-        </div>
+        <section aria-labelledby="experience-heading">
+          <h2 id="experience-heading">Experiencia profesional</h2>
+          <article class="job">
+            <div class="job-heading">
+              <h3>Software Engineer</h3>
+              <span class="date">07/2022 — Actualidad</span>
+            </div>
+            <p class="company">Dingus · Hitt Group</p>
+            <ul>
+              <li>Desarrollo y mantenimiento de un motor de reservas con Django, Python, JavaScript, HTML/Jinja, Sass, CSS, MySQL y Apache.</li>
+              <li>Desarrollo y mantenimiento de un producto para la gestión de canales, hoteles e integraciones con React, Flask y MongoDB.</li>
+              <li>Implementación de integraciones entre proveedores externos mediante flujos de consulta, transformación y envío de datos.</li>
+              <li>Diagnóstico y evolución de aplicaciones existentes, trabajando sobre backend, frontend, bases de datos y comunicación entre sistemas.</li>
+              <li>Trabajo colaborativo con Git y Jira. Desarrollo asistido por IA con Claude CLI desde terminal mediante agentes, skills, ciclos de revisión, controles de seguridad y pruebas.</li>
+            </ul>
+          </article>
+        </section>
 
-        <aside aria-label="Competencias y formación">
-          <section aria-labelledby="skills-heading">
-            <h2 id="skills-heading">Competencias</h2>
+        <section aria-labelledby="skills-heading">
+          <h2 id="skills-heading">Competencias</h2>
+          <div class="skills-grid">
             <div class="skill-group">
               <h3>Backend</h3>
               <p>Python · Django · Flask</p>
@@ -306,10 +340,12 @@
               <h3>Desarrollo asistido por IA</h3>
               <p>Claude CLI · Terminal · Agentes · Skills · Loops de trabajo</p>
             </div>
-          </section>
+          </div>
+        </section>
 
-          <section aria-labelledby="education-heading">
-            <h2 id="education-heading">Formación</h2>
+        <section aria-labelledby="education-heading">
+          <h2 id="education-heading">Formación</h2>
+          <div class="education-grid">
             <div class="education-item">
               <h3>Técnico Superior en Desarrollo de Aplicaciones Web</h3>
               <p>EDIB</p>
@@ -325,8 +361,10 @@
               <p>Santa Mónica</p>
               <span class="date">2017 — 2019</span>
             </div>
-          </section>
+          </div>
+        </section>
 
+        <div class="bottom-grid">
           <section aria-labelledby="languages-heading">
             <h2 id="languages-heading">Idiomas</h2>
             <div class="language-list">
@@ -343,7 +381,7 @@
               <a href="https://github.com/lluc898">github.com/lluc898</a>
             </div>
           </section>
-        </aside>
+        </div>
       </main>
 
       <footer>
