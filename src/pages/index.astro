@@ -1,0 +1,233 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Header from "../components/Header.astro";
+import SectionHeading from "../components/SectionHeading.astro";
+
+const stackGroups = [
+  { label: "Backend", technologies: ["Python", "Django", "Flask"] },
+  { label: "Frontend", technologies: ["JavaScript", "React", "HTML", "Jinja", "CSS", "Sass"] },
+  { label: "Datos", technologies: ["MySQL", "MongoDB"] },
+  { label: "Infraestructura y herramientas", technologies: ["Apache", "Git", "Jira"] },
+];
+
+---
+
+<BaseLayout>
+  <Header />
+
+  <main id="contenido">
+    <section id="inicio" class="hero shell" aria-labelledby="hero-title">
+      <div class="hero-grid" aria-hidden="true"></div>
+      <div class="hero-copy" data-reveal>
+        <div class="eyebrow">
+          <span class="status-dot"></span>
+          Software Engineer · España
+        </div>
+        <h1 id="hero-title">Lluc Bosch<br />Ramis<span class="accent">.</span></h1>
+        <p>
+          Construyo y evoluciono aplicaciones web para el sector hotelero —del backend al frontend— e integro IA en procesos de ingeniería con criterio técnico y control sobre el resultado.
+        </p>
+        <div class="hero-actions">
+          <a class="button button--primary" href="mailto:lluc.bosch@gmail.com">
+            Contactar
+            <svg viewBox="0 0 18 18" aria-hidden="true"><path d="M4 9h10M10 5l4 4-4 4"></path></svg>
+          </a>
+          <a class="button button--secondary" href="https://www.linkedin.com/in/lluc-bosch-ramis-80959b213/" target="_blank" rel="noreferrer">
+            LinkedIn
+            <svg viewBox="0 0 18 18" aria-hidden="true"><path d="M6 12 12 6M7 6h5v5"></path></svg>
+          </a>
+          <a class="button button--secondary" href="https://github.com/lluc898" target="_blank" rel="noreferrer">
+            GitHub
+            <svg viewBox="0 0 18 18" aria-hidden="true"><path d="M6 12 12 6M7 6h5v5"></path></svg>
+          </a>
+        </div>
+      </div>
+
+      <aside class="hero-index" aria-label="Áreas de trabajo" data-reveal>
+        <div class="hero-index__header">
+          <span>Engineering index</span>
+          <span>39.57° N / 2.65° E</span>
+        </div>
+        <ol>
+          <li><span>01</span><strong>Hotel products</strong><small>Build · Evolve</small></li>
+          <li><span>02</span><strong>Booking engines</strong><small>Web · Data</small></li>
+          <li><span>03</span><strong>Integrations</strong><small>Channels · Providers</small></li>
+          <li><span>04</span><strong>AI workflows</strong><small>Agents · Tests · Loops</small></li>
+        </ol>
+        <div class="hero-index__footer">
+          <span>Input</span>
+          <span class="index-line"></span>
+          <span>Verified output</span>
+        </div>
+      </aside>
+
+      <div class="hero-foot" aria-hidden="true">
+        <span>Portfolio / 2026</span>
+        <span>Scroll to inspect</span>
+      </div>
+    </section>
+
+    <section id="perfil" class="section shell" aria-labelledby="profile-title">
+      <SectionHeading id="profile-title" index="01" label="Perfil" title="Ingeniería web con contexto de producto y responsabilidad sobre el código." />
+      <div class="profile-layout">
+        <div class="profile-copy prose" data-reveal>
+          <p>
+            Soy Software Engineer especializado en desarrollo web. Desde 2022 trabajo en aplicaciones utilizadas en entornos reales, participando tanto en backend como en frontend y en la evolución continua de sistemas existentes.
+          </p>
+          <p>
+            He desarrollado un conocimiento amplio del sector hotelero trabajando en productos para hoteles, motores de reserva e integraciones con canales y proveedores externos como Booking y GIATA. Me interesa entender ese contexto antes de cambiar el código: cómo encaja una pieza, qué puede romperse y cómo comprobar que la solución responde al problema real.
+          </p>
+        </div>
+        <dl class="profile-facts" data-reveal>
+          <div><dt>Enfoque</dt><dd>Backend + Frontend</dd></div>
+          <div><dt>Entorno</dt><dd>Aplicaciones web en producción</dd></div>
+          <div><dt>Sector</dt><dd>Tecnología hotelera</dd></div>
+          <div><dt>Base</dt><dd>España</dd></div>
+          <div><dt>Idiomas</dt><dd>Castellano · Catalán · Inglés</dd></div>
+        </dl>
+      </div>
+    </section>
+
+    <section id="experiencia" class="section shell" aria-labelledby="experience-title">
+      <SectionHeading id="experience-title" index="02" label="Experiencia" title="Trabajo profesional sobre sistemas que deben seguir funcionando." />
+      <article class="experience" data-reveal>
+        <header class="experience__header">
+          <p class="experience__date">07/2022 — Actualidad</p>
+          <div>
+            <p class="experience__company">Dingus</p>
+            <h3>Software Engineer</h3>
+          </div>
+          <span class="experience__number" aria-hidden="true">01</span>
+        </header>
+        <div class="experience__body">
+          <div class="experience__summary prose">
+            <p>
+              Desarrollo y mantenimiento de productos web para el sector hotelero, trabajando a través de toda la capa de producto: servicios backend, interfaces frontend, bases de datos e integración entre sistemas.
+            </p>
+            <p>
+              El trabajo incluye motores de reserva e integraciones con canales y proveedores externos como Booking y GIATA, además de evolucionar aplicaciones existentes, diagnosticar problemas e implementar funcionalidades.
+            </p>
+          </div>
+          <ul class="responsibility-list" aria-label="Responsabilidades principales">
+            <li><span>01</span>Backend con Python, Django y Flask</li>
+            <li><span>02</span>Interfaces y funcionalidades con React y JavaScript</li>
+            <li><span>03</span>Persistencia con MySQL y MongoDB</li>
+            <li><span>04</span>Motores de reserva y productos para hoteles</li>
+            <li><span>05</span>Integraciones con canales y proveedores externos</li>
+            <li><span>06</span>Desarrollo asistido por IA con controles especializados</li>
+          </ul>
+        </div>
+        <footer class="experience__stack">
+          <span>Python</span><span>Django</span><span>Flask</span><span>React</span><span>JavaScript</span><span>MySQL</span><span>MongoDB</span><span>Apache</span><span>Git</span><span>Jira</span>
+        </footer>
+      </article>
+    </section>
+
+    <section id="stack" class="section shell" aria-labelledby="stack-title">
+      <SectionHeading id="stack-title" index="03" label="Stack" title="Tecnologías elegidas y usadas en trabajo real." />
+      <div class="stack-grid" data-reveal>
+        {stackGroups.map((group, index) => (
+          <article class="stack-group">
+            <header>
+              <span>{String(index + 1).padStart(2, "0")}</span>
+              <h3>{group.label}</h3>
+            </header>
+            <ul>
+              {group.technologies.map((technology) => <li>{technology}</li>)}
+            </ul>
+          </article>
+        ))}
+      </div>
+    </section>
+
+    <section id="ia" class="section shell" aria-labelledby="ai-title">
+      <SectionHeading id="ai-title" index="04" label="AI-assisted development" title="IA integrada en el proceso, no separada de la ingeniería." />
+      <div class="ai-layout">
+        <div class="ai-intro" data-reveal>
+          <div class="ai-metric" aria-label="Tres áreas de control especializado">
+            <strong>3</strong>
+            <span>controles</span>
+          </div>
+          <p>verificación, seguridad y pruebas unitarias</p>
+          <div class="ai-tools">
+            <span>Claude CLI</span>
+            <span>Cursor</span>
+          </div>
+        </div>
+        <div class="ai-content" data-reveal>
+          <p class="ai-lead">
+            Utilizo IA para acelerar exploración, implementación y debugging. El código generado queda rodeado por agentes estrictos especializados en verificación, seguridad y pruebas unitarias, manteniendo siempre la revisión humana y la responsabilidad sobre cada cambio.
+          </p>
+          <ol class="workflow">
+            <li>
+              <span class="workflow__index">01 / Verificación</span>
+              <h3>Revisar el código</h3>
+              <p>Agentes estrictos comprueban la implementación, detectan inconsistencias y contrastan el resultado con la tarea original.</p>
+            </li>
+            <li>
+              <span class="workflow__index">02 / Seguridad</span>
+              <h3>Buscar riesgos</h3>
+              <p>Agentes especializados revisan el cambio desde una perspectiva de seguridad antes de darlo por válido.</p>
+            </li>
+            <li>
+              <span class="workflow__index">03 / Pruebas</span>
+              <h3>Cubrir el comportamiento</h3>
+              <p>Agentes centrados en pruebas unitarias comprueban los casos relevantes y ayudan a detectar regresiones.</p>
+            </li>
+            <li>
+              <span class="workflow__index">04 / Loop</span>
+              <h3>Refinar hasta cerrar</h3>
+              <p>Los hallazgos vuelven al ciclo de implementación y revisión hasta obtener un resultado técnicamente sólido.</p>
+            </li>
+          </ol>
+        </div>
+      </div>
+    </section>
+
+    <section class="section shell" aria-labelledby="approach-title">
+      <SectionHeading id="approach-title" index="05" label="Enfoque" title="Claridad antes, durante y después del cambio." />
+      <div class="approach-grid" data-reveal>
+        <article>
+          <span>01</span>
+          <h3>Entender el sistema</h3>
+          <p>Leer el contexto, localizar dependencias y delimitar el problema antes de implementar.</p>
+        </article>
+        <article>
+          <span>02</span>
+          <h3>Cambiar con intención</h3>
+          <p>Buscar una solución mantenible, proporcionada al problema y coherente con el código existente.</p>
+        </article>
+        <article>
+          <span>03</span>
+          <h3>Verificar antes de cerrar</h3>
+          <p>Revisar el resultado, comprobar casos relevantes y conservar el control técnico del cambio.</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="contacto" class="contact-section" aria-labelledby="contact-title">
+      <div class="shell" data-reveal>
+        <div class="contact-meta"><span>06</span><span>Contacto</span></div>
+        <p class="contact-kicker">¿Hablamos?</p>
+        <h2 id="contact-title">Construyamos algo<br />que tenga sentido<span class="accent">.</span></h2>
+        <a class="contact-email" href="mailto:lluc.bosch@gmail.com">
+          <span>lluc.bosch@gmail.com</span>
+          <svg viewBox="0 0 36 36" aria-hidden="true"><path d="M7 18h22M20 9l9 9-9 9"></path></svg>
+        </a>
+        <div class="contact-links">
+          <a href="https://www.linkedin.com/in/lluc-bosch-ramis-80959b213/" target="_blank" rel="noreferrer">LinkedIn <span>↗</span></a>
+          <a href="https://github.com/lluc898" target="_blank" rel="noreferrer">GitHub <span>↗</span></a>
+          <a href="mailto:lluc.bosch@gmail.com">Email <span>↗</span></a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="shell">
+      <div><strong>Lluc Bosch Ramis</strong><span>Software Engineer</span></div>
+      <p>© 2026 · Diseñado y desarrollado con atención al detalle.</p>
+      <a href="#inicio">Volver arriba <span>↑</span></a>
+    </div>
+  </footer>
+</BaseLayout>

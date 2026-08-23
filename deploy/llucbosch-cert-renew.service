@@ -1,0 +1,10 @@
+[Unit]
+Description=Renovar el certificado TLS de llucbosch.com
+Requires=docker.service
+After=docker.service network-online.target
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/docker exec nginx-proxy-manager-app-1 certbot renew --quiet --no-random-sleep-on-renew --cert-name llucbosch.com
+ExecStartPost=/usr/bin/docker exec nginx-proxy-manager-app-1 nginx -t
+ExecStartPost=/usr/bin/docker exec nginx-proxy-manager-app-1 nginx -s reload

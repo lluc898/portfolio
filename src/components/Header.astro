@@ -1,0 +1,80 @@
+<header class="site-header" data-header>
+  <div class="shell flex h-[4.5rem] items-center justify-between gap-4">
+    <a class="brand group" href="#inicio" aria-label="Ir al inicio">
+      <span class="brand-mark" aria-hidden="true">LB</span>
+      <span class="hidden sm:inline">Lluc Bosch Ramis</span>
+    </a>
+
+    <div class="flex items-center gap-2">
+      <nav class="hidden lg:block" aria-label="Navegación principal">
+        <ul class="flex items-center gap-7">
+          <li><a class="nav-link" href="#perfil">Perfil</a></li>
+          <li><a class="nav-link" href="#experiencia">Experiencia</a></li>
+          <li><a class="nav-link" href="#stack">Stack</a></li>
+          <li><a class="nav-link" href="#ia">IA</a></li>
+          <li><a class="nav-link" href="#contacto">Contacto</a></li>
+        </ul>
+      </nav>
+
+      <button class="icon-button" type="button" data-theme-toggle aria-label="Activar modo oscuro" title="Cambiar tema">
+        <svg class="theme-icon theme-icon--sun" viewBox="0 0 24 24" aria-hidden="true">
+          <circle cx="12" cy="12" r="3.5"></circle>
+          <path d="M12 2v2M12 20v2M4.93 4.93l1.42 1.42M17.65 17.65l1.42 1.42M2 12h2M20 12h2M4.93 19.07l1.42-1.42M17.65 6.35l1.42-1.42"></path>
+        </svg>
+        <svg class="theme-icon theme-icon--moon" viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M20.4 15.5A8.5 8.5 0 0 1 8.5 3.6 8.5 8.5 0 1 0 20.4 15.5Z"></path>
+        </svg>
+      </button>
+
+      <button class="menu-button lg:hidden" type="button" data-menu-toggle aria-controls="mobile-menu" aria-expanded="false">
+        <span>Menú</span>
+        <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 5h10M3 8h10M3 11h10"></path></svg>
+      </button>
+    </div>
+  </div>
+
+  <nav id="mobile-menu" class="mobile-menu lg:hidden" data-mobile-menu aria-label="Navegación móvil" hidden>
+    <ul class="shell grid grid-cols-2 border-t py-4">
+      <li><a href="#perfil">Perfil <span>01</span></a></li>
+      <li><a href="#experiencia">Experiencia <span>02</span></a></li>
+      <li><a href="#stack">Stack <span>03</span></a></li>
+      <li><a href="#ia">IA <span>04</span></a></li>
+      <li><a href="#contacto">Contacto <span>05</span></a></li>
+    </ul>
+  </nav>
+</header>
+
+<script>
+  const themeToggle = document.querySelector<HTMLButtonElement>("[data-theme-toggle]");
+  const menuToggle = document.querySelector<HTMLButtonElement>("[data-menu-toggle]");
+  const mobileMenu = document.querySelector<HTMLElement>("[data-mobile-menu]");
+  const themeColor = document.querySelector<HTMLMetaElement>('meta[name="theme-color"]');
+
+  const updateThemeLabel = () => {
+    const isDark = document.documentElement.classList.contains("dark");
+    themeToggle?.setAttribute("aria-label", isDark ? "Activar modo claro" : "Activar modo oscuro");
+  };
+
+  updateThemeLabel();
+
+  themeToggle?.addEventListener("click", () => {
+    const isDark = document.documentElement.classList.toggle("dark");
+    localStorage.setItem("theme", isDark ? "dark" : "light");
+    themeColor?.setAttribute("content", isDark ? "#0b0b0b" : "#f7f7f5");
+    updateThemeLabel();
+  });
+
+  menuToggle?.addEventListener("click", () => {
+    if (!mobileMenu) return;
+    const isOpen = menuToggle.getAttribute("aria-expanded") === "true";
+    menuToggle.setAttribute("aria-expanded", String(!isOpen));
+    mobileMenu.hidden = isOpen;
+  });
+
+  mobileMenu?.querySelectorAll("a").forEach((link) => {
+    link.addEventListener("click", () => {
+      mobileMenu.hidden = true;
+      menuToggle?.setAttribute("aria-expanded", "false");
+    });
+  });
+</script>

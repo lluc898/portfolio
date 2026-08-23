@@ -1,0 +1,121 @@
+---
+import "@fontsource-variable/inter";
+import "@fontsource-variable/jetbrains-mono";
+import "../styles/global.css";
+
+interface Props {
+  title?: string;
+  description?: string;
+  canonicalPath?: string;
+  robots?: string;
+}
+
+const {
+  title = "Lluc Bosch Ramis — Software Engineer",
+  description = "Portfolio de Lluc Bosch Ramis, Software Engineer especializado en tecnología hotelera y flujos profesionales de desarrollo asistido por IA.",
+  canonicalPath = Astro.url.pathname,
+  robots = "index, follow",
+} = Astro.props;
+
+const canonicalUrl = new URL(canonicalPath, Astro.site);
+const socialImage = new URL("/og-image.png", Astro.site);
+
+const personSchema = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  name: "Lluc Bosch Ramis",
+  jobTitle: "Software Engineer",
+  url: "https://llucbosch.com",
+  email: "mailto:lluc.bosch@gmail.com",
+  address: {
+    "@type": "PostalAddress",
+    addressCountry: "ES",
+  },
+  sameAs: [
+    "https://www.linkedin.com/in/lluc-bosch-ramis-80959b213/",
+    "https://github.com/lluc898",
+  ],
+  knowsAbout: [
+    "Desarrollo web",
+    "Python",
+    "Django",
+    "Flask",
+    "React",
+    "JavaScript",
+    "MySQL",
+    "MongoDB",
+    "Tecnología para el sector hotelero",
+    "Motores de reserva",
+    "Integraciones con canales hoteleros",
+    "Desarrollo de software asistido por IA",
+  ],
+};
+---
+
+<!doctype html>
+<html lang="es" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <meta name="description" content={description} />
+    <meta name="robots" content={robots} />
+    <meta name="theme-color" content="#f7f7f5" />
+
+    <title>{title}</title>
+    <link rel="canonical" href={canonicalUrl} />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="es_ES" />
+    <meta property="og:site_name" content="Lluc Bosch Ramis" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonicalUrl} />
+    <meta property="og:image" content={socialImage} />
+    <meta property="og:image:alt" content="Lluc Bosch Ramis — Software Engineer" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={socialImage} />
+
+    <script is:inline type="application/ld+json" set:html={JSON.stringify(personSchema)} />
+    <script is:inline>
+      document.documentElement.classList.add("js");
+      const savedTheme = localStorage.getItem("theme");
+      const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+      if (savedTheme === "dark" || (!savedTheme && prefersDark)) {
+        document.documentElement.classList.add("dark");
+        document.querySelector('meta[name="theme-color"]')?.setAttribute("content", "#0b0b0b");
+      }
+    </script>
+  </head>
+  <body>
+    <a class="skip-link" href="#contenido">Saltar al contenido</a>
+    <slot />
+
+    <script>
+      const revealElements = document.querySelectorAll<HTMLElement>("[data-reveal]");
+      const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+      if (reduceMotion || !("IntersectionObserver" in window)) {
+        revealElements.forEach((element) => element.classList.add("is-visible"));
+      } else {
+        const observer = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                entry.target.classList.add("is-visible");
+                observer.unobserve(entry.target);
+              }
+            });
+          },
+          { rootMargin: "0px 0px -8%", threshold: 0.08 },
+        );
+
+        revealElements.forEach((element) => observer.observe(element));
+      }
+    </script>
+  </body>
+</html>

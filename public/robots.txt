@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://llucbosch.com/sitemap-index.xml

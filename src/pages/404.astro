@@ -1,0 +1,23 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+---
+
+<BaseLayout
+  title="Página no encontrada — Lluc Bosch Ramis"
+  description="La página solicitada no existe."
+  canonicalPath="/404"
+  robots="noindex, nofollow"
+>
+  <main class="error-page">
+    <div class="error-page__grid" aria-hidden="true"></div>
+    <div class="error-page__content">
+      <p>HTTP / 404</p>
+      <h1>Esta ruta no lleva<br />a ninguna parte<span class="accent">.</span></h1>
+      <p>La página que buscas no existe o ha cambiado de dirección.</p>
+      <a class="button button--primary" href="/">
+        Volver al portfolio
+        <svg viewBox="0 0 18 18" aria-hidden="true"><path d="M4 9h10M10 5l4 4-4 4"></path></svg>
+      </a>
+    </div>
+  </main>
+</BaseLayout>
