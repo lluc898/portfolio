@@ -29,6 +29,7 @@ La web presenta experiencia profesional, proyectos, stack técnico y forma de tr
 
 - Contenido orientado a recruiters y equipos de ingeniería.
 - Experiencia profesional explicada mediante áreas de contribución y casos concretos.
+- CV profesional en PDF, descargable desde el hero y la sección de contacto.
 - Arquitectura estática, sin JavaScript de aplicación innecesario.
 - Diseño responsive con tema claro y oscuro.
 - Navegación por teclado, foco visible y soporte para `prefers-reduced-motion`.
@@ -93,6 +94,7 @@ src/
 └── styles/       Sistema visual global
 
 public/           Favicon, robots e imagen social
+cv/               Fuente HTML del CV profesional
 deploy/           Configuración de Nginx y Docker Compose
 ```
 

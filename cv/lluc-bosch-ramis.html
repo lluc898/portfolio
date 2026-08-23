@@ -1,0 +1,396 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CV — Lluc Bosch Ramis</title>
+    <style>
+      @page {
+        size: A4;
+        margin: 0;
+      }
+
+      :root {
+        color-scheme: light;
+        font-family: Arial, Helvetica, sans-serif;
+        --ink: #111318;
+        --muted: #5d616b;
+        --line: #d9dce3;
+        --accent: #315fef;
+        --soft: #f3f5f9;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        background: #e7e9ee;
+        color: var(--ink);
+        font-size: 9.1pt;
+        line-height: 1.42;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+      }
+
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+
+      .page {
+        width: 210mm;
+        min-height: 297mm;
+        margin: 12mm auto;
+        padding: 10mm 16mm 8mm;
+        background: #ffffff;
+        box-shadow: 0 8mm 22mm rgba(22, 27, 42, 0.15);
+      }
+
+      .topline {
+        width: 18mm;
+        height: 1.2mm;
+        margin-bottom: 6mm;
+        background: var(--accent);
+      }
+
+      header {
+        border-bottom: 0.35mm solid var(--ink);
+        padding-bottom: 4.5mm;
+      }
+
+      h1 {
+        margin: 0;
+        font-size: 27pt;
+        letter-spacing: -1.2pt;
+        line-height: 0.95;
+      }
+
+      .role {
+        margin: 2.6mm 0 0;
+        color: var(--accent);
+        font-size: 11pt;
+        font-weight: 700;
+        letter-spacing: 0.3pt;
+      }
+
+      .contact {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1.5mm 4mm;
+        margin-top: 3.5mm;
+        color: var(--muted);
+        font-size: 8.1pt;
+      }
+
+      .contact a::after,
+      .contact span::after {
+        margin-left: 4mm;
+        color: var(--line);
+        content: "|";
+      }
+
+      .contact :last-child::after {
+        content: "";
+      }
+
+      main {
+        display: grid;
+        grid-template-columns: minmax(0, 1.65fr) minmax(51mm, 0.78fr);
+        gap: 10mm;
+        padding-top: 5mm;
+      }
+
+      section {
+        margin-bottom: 5mm;
+      }
+
+      h2 {
+        margin: 0 0 3.4mm;
+        font-size: 8pt;
+        letter-spacing: 1.1pt;
+        text-transform: uppercase;
+      }
+
+      .summary {
+        margin: 0;
+        color: #333741;
+        font-size: 9.6pt;
+        line-height: 1.55;
+      }
+
+      .job {
+        border-top: 0.35mm solid var(--ink);
+        padding-top: 3.8mm;
+      }
+
+      .job-heading {
+        display: flex;
+        align-items: baseline;
+        justify-content: space-between;
+        gap: 5mm;
+      }
+
+      .job h3 {
+        margin: 0;
+        font-size: 12pt;
+        letter-spacing: -0.2pt;
+      }
+
+      .date {
+        flex: 0 0 auto;
+        color: var(--muted);
+        font-family: "Courier New", Courier, monospace;
+        font-size: 7.5pt;
+      }
+
+      .company {
+        margin: 0.8mm 0 3mm;
+        color: var(--accent);
+        font-size: 8.3pt;
+        font-weight: 700;
+      }
+
+      ul {
+        margin: 0;
+        padding-left: 4.5mm;
+      }
+
+      li {
+        margin-bottom: 1.9mm;
+        padding-left: 0.8mm;
+        color: #333741;
+      }
+
+      li::marker {
+        color: var(--accent);
+      }
+
+      .case {
+        border-left: 1mm solid var(--accent);
+        padding: 3.6mm 4mm;
+        background: var(--soft);
+      }
+
+      .case h3 {
+        margin: 0 0 1.5mm;
+        font-size: 9.5pt;
+      }
+
+      .case p {
+        margin: 0;
+        color: #3e424c;
+        font-size: 8.4pt;
+      }
+
+      .case-flow {
+        margin-top: 2.2mm;
+        color: var(--accent);
+        font-family: "Courier New", Courier, monospace;
+        font-size: 7.5pt;
+        font-weight: 700;
+        letter-spacing: 0.2pt;
+      }
+
+      aside {
+        border-left: 0.3mm solid var(--line);
+        padding-left: 7mm;
+      }
+
+      .skill-group {
+        margin-bottom: 3.5mm;
+      }
+
+      .skill-group h3,
+      .education-item h3 {
+        margin: 0 0 0.8mm;
+        font-size: 8.5pt;
+      }
+
+      .skill-group p,
+      .education-item p,
+      .language-list p {
+        margin: 0;
+        color: var(--muted);
+        font-size: 8.1pt;
+        line-height: 1.48;
+      }
+
+      .education-item {
+        margin-bottom: 3.5mm;
+      }
+
+      .education-item .date {
+        display: block;
+        margin-top: 0.8mm;
+      }
+
+      .language-list {
+        display: grid;
+        gap: 1.2mm;
+      }
+
+      .language-list strong {
+        color: var(--ink);
+      }
+
+      .profile-links {
+        display: grid;
+        gap: 1.6mm;
+        font-size: 8.1pt;
+      }
+
+      .profile-links a {
+        color: var(--accent);
+        overflow-wrap: anywhere;
+      }
+
+      footer {
+        display: flex;
+        justify-content: space-between;
+        gap: 5mm;
+        border-top: 0.3mm solid var(--line);
+        padding-top: 3mm;
+        color: var(--muted);
+        font-size: 7.2pt;
+      }
+
+      @media print {
+        body {
+          background: #ffffff;
+        }
+
+        .page {
+          margin: 0;
+          box-shadow: none;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <article class="page">
+      <div class="topline" aria-hidden="true"></div>
+      <header>
+        <h1>Lluc Bosch Ramis</h1>
+        <p class="role">Software Engineer</p>
+        <div class="contact" aria-label="Datos de contacto">
+          <span>España</span>
+          <a href="tel:+34697136238">697 136 238</a>
+          <a href="mailto:lluc.bosch@gmail.com">lluc.bosch@gmail.com</a>
+          <a href="https://llucbosch.com">llucbosch.com</a>
+        </div>
+      </header>
+
+      <main>
+        <div>
+          <section aria-labelledby="profile-heading">
+            <h2 id="profile-heading">Perfil profesional</h2>
+            <p class="summary">
+              Software Engineer con experiencia profesional desde 2022 desarrollando y evolucionando aplicaciones web para el sector hotelero. Trabajo en backend, frontend, persistencia e integraciones externas, con especial atención al contexto del producto, la mantenibilidad y la verificación de cada cambio.
+            </p>
+          </section>
+
+          <section aria-labelledby="experience-heading">
+            <h2 id="experience-heading">Experiencia profesional</h2>
+            <article class="job">
+              <div class="job-heading">
+                <h3>Software Engineer</h3>
+                <span class="date">07/2022 — Actualidad</span>
+              </div>
+              <p class="company">Dingus · Hitt Group</p>
+              <ul>
+                <li>Desarrollo y mantenimiento de un motor de reservas con Django, Python, JavaScript, HTML/Jinja, Sass, CSS, MySQL y Apache.</li>
+                <li>Desde 02/2024, desarrollo y mantenimiento de un Smart Channel para canales, hoteles e integraciones con React, Flask y MongoDB.</li>
+                <li>Implementación de integraciones entre proveedores externos, incluyendo un flujo de sincronización de datos entre Booking y GIATA.</li>
+                <li>Diagnóstico y evolución de aplicaciones existentes, trabajando sobre backend, frontend, bases de datos y comunicación entre sistemas.</li>
+                <li>Trabajo colaborativo con Git y Jira. Desarrollo asistido por IA con Claude y Cursor mediante agentes, skills, ciclos de revisión, controles de seguridad y pruebas.</li>
+              </ul>
+            </article>
+          </section>
+
+          <section aria-labelledby="case-heading">
+            <h2 id="case-heading">Caso técnico seleccionado</h2>
+            <article class="case">
+              <h3>Sincronización Booking → GIATA</h3>
+              <p>Implementación del recorrido completo: consulta de la API oficial de Booking, adaptación de los datos mediante un transformer independiente y envío del payload resultante a GIATA. Se omiten detalles internos por confidencialidad.</p>
+              <div class="case-flow">PULL → TRANSFORM → PUSH</div>
+            </article>
+          </section>
+        </div>
+
+        <aside aria-label="Competencias y formación">
+          <section aria-labelledby="skills-heading">
+            <h2 id="skills-heading">Competencias</h2>
+            <div class="skill-group">
+              <h3>Backend</h3>
+              <p>Python · Django · Flask</p>
+            </div>
+            <div class="skill-group">
+              <h3>Frontend</h3>
+              <p>JavaScript · React · HTML · Jinja · CSS · Sass</p>
+            </div>
+            <div class="skill-group">
+              <h3>Datos e infraestructura</h3>
+              <p>MySQL · MongoDB · Apache · Git</p>
+            </div>
+            <div class="skill-group">
+              <h3>Integraciones</h3>
+              <p>APIs externas · Data mapping · Transformers · Pull/Push</p>
+            </div>
+            <div class="skill-group">
+              <h3>Desarrollo asistido por IA</h3>
+              <p>Claude CLI · Cursor · Agentes · Skills · Loops de trabajo</p>
+            </div>
+          </section>
+
+          <section aria-labelledby="education-heading">
+            <h2 id="education-heading">Formación</h2>
+            <div class="education-item">
+              <h3>Grado en Informática · En curso</h3>
+              <p>Universitat Carlemany</p>
+              <span class="date">2023 — Actualidad</span>
+            </div>
+            <div class="education-item">
+              <h3>Técnico Superior en Desarrollo de Aplicaciones Web</h3>
+              <p>EDIB</p>
+              <span class="date">2019 — 2021</span>
+            </div>
+            <div class="education-item">
+              <h3>Certificados profesionales nivel 3</h3>
+              <p>IFCT0609 · IFCD0210 · Kaicen</p>
+              <span class="date">2022 — 2023</span>
+            </div>
+            <div class="education-item">
+              <h3>Técnico en Sistemas Microinformáticos y Redes</h3>
+              <p>Santa Mónica</p>
+              <span class="date">2017 — 2019</span>
+            </div>
+          </section>
+
+          <section aria-labelledby="languages-heading">
+            <h2 id="languages-heading">Idiomas</h2>
+            <div class="language-list">
+              <p><strong>Castellano</strong> · Nativo</p>
+              <p><strong>Catalán</strong> · Nativo</p>
+              <p><strong>Inglés</strong> · Intermedio</p>
+            </div>
+          </section>
+
+          <section aria-labelledby="links-heading">
+            <h2 id="links-heading">Perfiles</h2>
+            <div class="profile-links">
+              <a href="https://www.linkedin.com/in/lluc-bosch-ramis-80959b213/">LinkedIn</a>
+              <a href="https://github.com/lluc898">github.com/lluc898</a>
+            </div>
+          </section>
+        </aside>
+      </main>
+
+      <footer>
+        <span>CV actualizado · Agosto 2026</span>
+        <span>Portfolio y proyectos: llucbosch.com</span>
+      </footer>
+    </article>
+  </body>
+</html>
