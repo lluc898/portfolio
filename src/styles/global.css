@@ -620,6 +620,162 @@ button:focus-visible {
   font-size: 0.59rem;
 }
 
+.featured-project {
+  border-top: 1px solid var(--text);
+  border-bottom: 1px solid var(--text);
+}
+
+.featured-project__header,
+.featured-project__meta,
+.featured-project__status,
+.featured-project__footer,
+.featured-project__actions {
+  display: flex;
+  align-items: center;
+}
+
+.featured-project__header {
+  justify-content: space-between;
+  gap: 1.5rem;
+  border-bottom: 1px solid var(--border);
+  padding-block: 1rem;
+}
+
+.featured-project__meta {
+  flex-wrap: wrap;
+  gap: 0.65rem 1.5rem;
+  color: var(--muted);
+  font-family: "JetBrains Mono Variable", monospace;
+  font-size: 0.6rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.featured-project__meta span:first-child {
+  color: var(--accent);
+}
+
+.featured-project__status {
+  flex: 0 0 auto;
+  gap: 0.55rem;
+  color: var(--muted);
+  font-family: "JetBrains Mono Variable", monospace;
+  font-size: 0.6rem;
+  letter-spacing: 0.04em;
+}
+
+.featured-project__status > span {
+  width: 0.42rem;
+  height: 0.42rem;
+  border-radius: 50%;
+  background: var(--accent);
+  box-shadow: 0 0 0 0.2rem color-mix(in srgb, var(--accent), transparent 82%);
+}
+
+.featured-project__intro {
+  display: grid;
+  gap: 2rem;
+  border-bottom: 1px solid var(--border);
+  padding-block: clamp(2.5rem, 6vw, 4.5rem);
+}
+
+.featured-project__type {
+  margin: 0 0 1rem;
+  color: var(--muted);
+  font-family: "JetBrains Mono Variable", monospace;
+  font-size: 0.62rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.featured-project h3 {
+  margin: 0;
+  font-size: clamp(2.6rem, 7vw, 6rem);
+  font-weight: 670;
+  letter-spacing: -0.065em;
+  line-height: 0.92;
+}
+
+.featured-project__lead {
+  max-width: 34rem;
+  margin: 0;
+  color: var(--muted);
+  font-size: clamp(1rem, 2vw, 1.2rem);
+  line-height: 1.7;
+}
+
+.featured-project__details,
+.featured-project__scope {
+  display: grid;
+}
+
+.featured-project__details > div,
+.featured-project__scope > div {
+  border-bottom: 1px solid var(--border);
+  padding: 1.5rem 0 2rem;
+}
+
+.featured-project__details span,
+.featured-project__scope span {
+  color: var(--accent);
+  font-family: "JetBrains Mono Variable", monospace;
+  font-size: 0.59rem;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+}
+
+.featured-project__details h4 {
+  max-width: 18rem;
+  margin: 2.5rem 0 0.75rem;
+  font-size: 1.08rem;
+  font-weight: 630;
+  letter-spacing: -0.02em;
+}
+
+.featured-project__details p,
+.featured-project__scope p {
+  max-width: 23rem;
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.84rem;
+}
+
+.featured-project__scope > div {
+  display: grid;
+  gap: 0.6rem;
+}
+
+.featured-project__footer {
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 2rem;
+  padding-block: 1.5rem;
+}
+
+.featured-project__footer ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.featured-project__footer li {
+  border: 1px solid var(--border);
+  border-radius: 0.28rem;
+  padding: 0.34rem 0.5rem;
+  color: var(--muted);
+  font-family: "JetBrains Mono Variable", monospace;
+  font-size: 0.59rem;
+}
+
+.featured-project__actions {
+  flex: 0 0 auto;
+  flex-wrap: wrap;
+  gap: 0.65rem;
+}
+
 .stack-grid {
   display: grid;
   border-top: 1px solid var(--text);
@@ -970,8 +1126,41 @@ button:focus-visible {
 
   .profile-layout,
   .experience__body,
-  .ai-layout {
+  .ai-layout,
+  .featured-project__intro {
     grid-template-columns: minmax(0, 1fr) minmax(20rem, 1fr);
+  }
+
+  .featured-project__details {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .featured-project__details > div {
+    min-height: 19rem;
+    border-right: 1px solid var(--border);
+    padding: 1.5rem 2rem 2rem;
+  }
+
+  .featured-project__details > div:first-child {
+    padding-left: 0;
+  }
+
+  .featured-project__details > div:last-child {
+    border-right: 0;
+    padding-right: 0;
+  }
+
+  .featured-project__scope {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .featured-project__scope > div:first-child {
+    border-right: 1px solid var(--border);
+    padding-right: 2rem;
+  }
+
+  .featured-project__scope > div:last-child {
+    padding-left: 2rem;
   }
 
   .experience__header {
@@ -1080,6 +1269,17 @@ button:focus-visible {
 
   .hero-actions .button {
     flex: 1;
+  }
+
+  .featured-project__header,
+  .featured-project__footer {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .featured-project__actions,
+  .featured-project__actions .button {
+    width: 100%;
   }
 
   .contact-email span {

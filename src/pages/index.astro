@@ -28,7 +28,11 @@ const stackGroups = [
           Construyo y evoluciono aplicaciones web para el sector hotelero —del backend al frontend— e integro IA en procesos de ingeniería con criterio técnico y control sobre el resultado.
         </p>
         <div class="hero-actions">
-          <a class="button button--primary" href="mailto:lluc.bosch@gmail.com">
+          <a class="button button--primary" href="#proyectos">
+            Ver proyectos
+            <svg viewBox="0 0 18 18" aria-hidden="true"><path d="M4 9h10M10 5l4 4-4 4"></path></svg>
+          </a>
+          <a class="button button--secondary" href="mailto:lluc.bosch@gmail.com">
             Contactar
             <svg viewBox="0 0 18 18" aria-hidden="true"><path d="M4 9h10M10 5l4 4-4 4"></path></svg>
           </a>
@@ -123,8 +127,85 @@ const stackGroups = [
       </article>
     </section>
 
+    <section id="proyectos" class="section shell" aria-labelledby="projects-title">
+      <SectionHeading id="projects-title" index="03" label="Proyectos" title="Productos construidos para resolver problemas concretos." />
+
+      <article class="featured-project" data-reveal>
+        <header class="featured-project__header">
+          <div class="featured-project__meta">
+            <span>Proyecto destacado</span>
+            <span>01 / Neon Led Spain</span>
+          </div>
+          <span class="featured-project__status">
+            <span aria-hidden="true"></span>
+            Demo pública · En evolución
+          </span>
+        </header>
+
+        <div class="featured-project__intro">
+          <div>
+            <p class="featured-project__type">E-commerce · Configurador de producto</p>
+            <h3>Neon Led Spain</h3>
+          </div>
+          <p class="featured-project__lead">
+            Una tienda online especializada en neones LED personalizados. El producto combina catálogo, configuración visual, precio en vivo, carrito, solicitudes a medida y un panel de gestión.
+          </p>
+        </div>
+
+        <div class="featured-project__details">
+          <div>
+            <span>01 / Problema</span>
+            <h4>Comprar un producto que todavía no existe</h4>
+            <p>Un neón personalizado no encaja en un catálogo convencional: antes de comprar, el usuario necesita definir texto, estilo y medidas, visualizar el resultado y conocer su precio.</p>
+          </div>
+          <div>
+            <span>02 / Solución</span>
+            <h4>Configuración y gestión en un mismo producto</h4>
+            <p>El flujo permite personalizar el neón con preview y precio en vivo, añadirlo al carrito o enviar un diseño propio, mientras el área administrativa centraliza productos, precios, pedidos y solicitudes.</p>
+          </div>
+          <div>
+            <span>03 / Decisiones</span>
+            <h4>El servidor conserva la fuente de verdad</h4>
+            <p>El precio se recalcula en servidor antes de persistir el pedido. Prisma y PostgreSQL estructuran el dominio; Supabase gestiona datos y archivos; Docker y Nginx sostienen el despliegue self-hosted.</p>
+          </div>
+        </div>
+
+        <div class="featured-project__scope">
+          <div>
+            <span>Ámbito del trabajo</span>
+            <p>Producto · Frontend · Backend · Datos · Despliegue</p>
+          </div>
+          <div>
+            <span>Estado actual</span>
+            <p>Demo funcional; pagos y automatización de emails todavía pendientes.</p>
+          </div>
+        </div>
+
+        <footer class="featured-project__footer">
+          <ul aria-label="Tecnologías utilizadas en Neon Led Spain">
+            <li>Next.js</li>
+            <li>TypeScript</li>
+            <li>Prisma</li>
+            <li>PostgreSQL</li>
+            <li>Supabase</li>
+            <li>Docker</li>
+          </ul>
+          <div class="featured-project__actions">
+            <a class="button button--primary" href="https://neonledspain.llucbosch.com/" target="_blank" rel="noreferrer">
+              Ver demo
+              <svg viewBox="0 0 18 18" aria-hidden="true"><path d="M6 12 12 6M7 6h5v5"></path></svg>
+            </a>
+            <a class="button button--secondary" href="https://github.com/lluc898/neonweb" target="_blank" rel="noreferrer">
+              Ver código
+              <svg viewBox="0 0 18 18" aria-hidden="true"><path d="M6 12 12 6M7 6h5v5"></path></svg>
+            </a>
+          </div>
+        </footer>
+      </article>
+    </section>
+
     <section id="stack" class="section shell" aria-labelledby="stack-title">
-      <SectionHeading id="stack-title" index="03" label="Stack" title="Tecnologías elegidas y usadas en trabajo real." />
+      <SectionHeading id="stack-title" index="04" label="Stack" title="Tecnologías elegidas y usadas en trabajo real." />
       <div class="stack-grid" data-reveal>
         {stackGroups.map((group, index) => (
           <article class="stack-group">
@@ -141,7 +222,7 @@ const stackGroups = [
     </section>
 
     <section id="ia" class="section shell" aria-labelledby="ai-title">
-      <SectionHeading id="ai-title" index="04" label="AI-assisted development" title="IA integrada en el proceso, no separada de la ingeniería." />
+      <SectionHeading id="ai-title" index="05" label="AI-assisted development" title="IA integrada en el proceso, no separada de la ingeniería." />
       <div class="ai-layout">
         <div class="ai-intro" data-reveal>
           <div class="ai-metric" aria-label="Tres áreas de control especializado">
@@ -184,8 +265,8 @@ const stackGroups = [
       </div>
     </section>
 
-    <section class="section shell" aria-labelledby="approach-title">
-      <SectionHeading id="approach-title" index="05" label="Enfoque" title="Claridad antes, durante y después del cambio." />
+    <section id="enfoque" class="section shell" aria-labelledby="approach-title">
+      <SectionHeading id="approach-title" index="06" label="Enfoque" title="Claridad antes, durante y después del cambio." />
       <div class="approach-grid" data-reveal>
         <article>
           <span>01</span>
@@ -207,7 +288,7 @@ const stackGroups = [
 
     <section id="contacto" class="contact-section" aria-labelledby="contact-title">
       <div class="shell" data-reveal>
-        <div class="contact-meta"><span>06</span><span>Contacto</span></div>
+        <div class="contact-meta"><span>07</span><span>Contacto</span></div>
         <p class="contact-kicker">¿Hablamos?</p>
         <h2 id="contact-title">Construyamos algo<br />que tenga sentido<span class="accent">.</span></h2>
         <a class="contact-email" href="mailto:lluc.bosch@gmail.com">

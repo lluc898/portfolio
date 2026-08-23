@@ -23,7 +23,7 @@
 
 Portfolio profesional de **Lluc Bosch Ramis**, Software Engineer especializado en desarrollo web, tecnología hotelera y flujos de ingeniería asistidos por IA.
 
-La web presenta experiencia profesional, stack técnico y forma de trabajo con una interfaz sobria, rápida y accesible. Está construida como sitio estático con Astro y publicada en [llucbosch.com](https://llucbosch.com).
+La web presenta experiencia profesional, proyectos, stack técnico y forma de trabajo con una interfaz sobria, rápida y accesible. Está construida como sitio estático con Astro y publicada en [llucbosch.com](https://llucbosch.com).
 
 ## Características
 
@@ -34,6 +34,18 @@ La web presenta experiencia profesional, stack técnico y forma de trabajo con u
 - SEO técnico con canonical, Open Graph, Twitter Cards, sitemap y datos estructurados.
 - Página 404 propia y configuración de producción con Nginx y Docker Compose.
 - Validación automática de tipos y build en cada push y pull request.
+
+## Proyecto destacado
+
+### Neon Led Spain
+
+E-commerce de neones LED personalizados con catálogo, configurador visual, precio en vivo, carrito, solicitudes a medida y panel administrativo.
+
+El caso de estudio del portfolio explica el problema del producto, la solución y varias decisiones técnicas, entre ellas el recálculo del precio en servidor y el despliegue self-hosted.
+
+- [Ver caso de estudio](https://llucbosch.com/#proyectos)
+- [Abrir demo](https://neonledspain.llucbosch.com/)
+- [Consultar código](https://github.com/lluc898/neonweb)
 
 ## Stack
 
@@ -88,4 +100,3 @@ Las decisiones de producto y diseño están documentadas en [CODEX.md](./CODEX.m
 - Web: [llucbosch.com](https://llucbosch.com)
 - LinkedIn: [Lluc Bosch Ramis](https://www.linkedin.com/in/lluc-bosch-ramis-80959b213/)
 - Email: [lluc.bosch@gmail.com](mailto:lluc.bosch@gmail.com)
-
