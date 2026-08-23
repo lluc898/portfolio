@@ -192,9 +192,9 @@ Tecnologías utilizadas durante la experiencia:
 
 Python, Django, Flask, React, JavaScript, HTML, Jinja, CSS, Sass, MySQL, MongoDB, Apache, Git, Jira.
 
-Herramientas de desarrollo asistido por IA:
+Herramienta de desarrollo asistido por IA:
 
-Claude CLI, Cursor.
+Claude CLI desde terminal.
 
 ### Desarrollo con IA como competencia profesional
 
@@ -293,7 +293,6 @@ Agrupar las tecnologías por categorías.
 ### AI-assisted development
 
 - Claude CLI
-- Cursor
 - Agentes
 - Skills
 - Loops de trabajo iterativos

@@ -351,7 +351,6 @@ Apache
 ### AI-assisted development
 
 Claude
-Cursor
 
 Mostrar las tecnologías como etiquetas o pequeños elementos tipográficos.
 
@@ -367,7 +366,7 @@ No mostrar estudios no completados.
 
 # 14. AI-assisted development
 
-Dado que Lluc utiliza herramientas como Claude y Cursor profesionalmente, puede existir un pequeño apartado dentro de la experiencia o stack.
+Dado que Lluc utiliza Claude CLI desde terminal profesionalmente, puede existir un pequeño apartado dentro de la experiencia o stack.
 
 No venderlo como:
 
