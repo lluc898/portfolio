@@ -776,6 +776,149 @@ button:focus-visible {
   gap: 0.65rem;
 }
 
+.professional-case {
+  margin-top: clamp(4rem, 9vw, 7rem);
+  border-top: 1px solid var(--text);
+  border-bottom: 1px solid var(--text);
+}
+
+.professional-case__header,
+.professional-case__meta,
+.professional-case__footer {
+  display: flex;
+  align-items: center;
+}
+
+.professional-case__header {
+  justify-content: space-between;
+  gap: 1.5rem;
+  border-bottom: 1px solid var(--border);
+  padding-block: 1rem;
+  color: var(--muted);
+  font-family: "JetBrains Mono Variable", monospace;
+  font-size: 0.6rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.professional-case__meta {
+  flex-wrap: wrap;
+  gap: 0.65rem 1.5rem;
+}
+
+.professional-case__meta span:first-child {
+  color: var(--accent);
+}
+
+.professional-case__intro {
+  display: grid;
+  gap: 2rem;
+  border-bottom: 1px solid var(--border);
+  padding-block: clamp(2.5rem, 6vw, 4.5rem);
+}
+
+.professional-case__type {
+  margin: 0 0 1rem;
+  color: var(--muted);
+  font-family: "JetBrains Mono Variable", monospace;
+  font-size: 0.62rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.professional-case h3 {
+  max-width: 16ch;
+  margin: 0;
+  font-size: clamp(2rem, 5vw, 4rem);
+  font-weight: 650;
+  letter-spacing: -0.055em;
+  line-height: 1;
+}
+
+.professional-case__intro > p {
+  max-width: 34rem;
+  margin: 0;
+  color: var(--muted);
+  font-size: clamp(1rem, 2vw, 1.16rem);
+  line-height: 1.7;
+}
+
+.integration-flow,
+.professional-case__evidence {
+  display: grid;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.integration-flow li,
+.professional-case__evidence > div {
+  border-bottom: 1px solid var(--border);
+  padding: 1.5rem 0 2rem;
+}
+
+.integration-flow span,
+.professional-case__evidence span {
+  color: var(--accent);
+  font-family: "JetBrains Mono Variable", monospace;
+  font-size: 0.59rem;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+}
+
+.integration-flow h4 {
+  margin: 2.5rem 0 0.75rem;
+  font-size: 1.08rem;
+  font-weight: 630;
+  letter-spacing: -0.02em;
+}
+
+.integration-flow p,
+.professional-case__evidence p {
+  max-width: 23rem;
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.84rem;
+}
+
+.professional-case__evidence > div {
+  display: grid;
+  gap: 0.6rem;
+}
+
+.professional-case__footer {
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 2rem;
+  padding-block: 1.5rem;
+}
+
+.professional-case__footer ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.professional-case__footer li {
+  border: 1px solid var(--border);
+  border-radius: 0.28rem;
+  padding: 0.34rem 0.5rem;
+  color: var(--muted);
+  font-family: "JetBrains Mono Variable", monospace;
+  font-size: 0.59rem;
+}
+
+.professional-case__footer > p {
+  max-width: 25rem;
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.75rem;
+  text-align: right;
+}
+
 .stack-grid {
   display: grid;
   border-top: 1px solid var(--text);
@@ -1135,6 +1278,32 @@ button:focus-visible {
     grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 
+  .professional-case__intro {
+    grid-template-columns: minmax(0, 1fr) minmax(20rem, 1fr);
+  }
+
+  .integration-flow,
+  .professional-case__evidence {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .integration-flow li,
+  .professional-case__evidence > div {
+    border-right: 1px solid var(--border);
+    padding: 1.5rem 2rem 2rem;
+  }
+
+  .integration-flow li:first-child,
+  .professional-case__evidence > div:first-child {
+    padding-left: 0;
+  }
+
+  .integration-flow li:last-child,
+  .professional-case__evidence > div:last-child {
+    border-right: 0;
+    padding-right: 0;
+  }
+
   .featured-project__details > div {
     min-height: 19rem;
     border-right: 1px solid var(--border);
@@ -1272,9 +1441,15 @@ button:focus-visible {
   }
 
   .featured-project__header,
-  .featured-project__footer {
+  .featured-project__footer,
+  .professional-case__header,
+  .professional-case__footer {
     align-items: flex-start;
     flex-direction: column;
+  }
+
+  .professional-case__footer > p {
+    text-align: left;
   }
 
   .featured-project__actions,

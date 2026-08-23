@@ -47,6 +47,8 @@ El caso de estudio del portfolio explica el problema del producto, la solución 
 - [Abrir demo](https://neonledspain.llucbosch.com/)
 - [Consultar código](https://github.com/lluc898/neonweb)
 
+La sección de proyectos incluye además un caso profesional anonimizado sobre sincronización de datos entre proveedores hoteleros, descrito como un flujo `Pull → Transform → Push` sin exponer información interna.
+
 ## Stack
 
 | Área | Tecnología |

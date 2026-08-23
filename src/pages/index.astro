@@ -202,6 +202,69 @@ const stackGroups = [
           </div>
         </footer>
       </article>
+
+      <article class="professional-case" data-reveal>
+        <header class="professional-case__header">
+          <div class="professional-case__meta">
+            <span>Caso profesional anonimizado</span>
+            <span>02 / Integración de datos hoteleros</span>
+          </div>
+          <span>Booking → GIATA</span>
+        </header>
+
+        <div class="professional-case__intro">
+          <div>
+            <p class="professional-case__type">APIs externas · Sincronización de datos</p>
+            <h3>Un flujo para conectar dos modelos de datos distintos.</h3>
+          </div>
+          <p>
+            Implementé una integración que consulta la API oficial de Booking desde un sistema externo, transforma los datos recibidos al contrato esperado por GIATA y los envía para completar la sincronización.
+          </p>
+        </div>
+
+        <ol class="integration-flow" aria-label="Flujo de sincronización entre Booking y GIATA">
+          <li>
+            <span>01 / Pull</span>
+            <h4>Recoger los datos</h4>
+            <p>El sistema de origen consulta la API oficial de Booking y obtiene la información que debe sincronizarse.</p>
+          </li>
+          <li>
+            <span>02 / Transform</span>
+            <h4>Adaptar el contrato</h4>
+            <p>Un transformer dedicado convierte y organiza los datos de Booking según la estructura requerida por GIATA.</p>
+          </li>
+          <li>
+            <span>03 / Push</span>
+            <h4>Completar la sincronización</h4>
+            <p>El payload transformado se envía a GIATA, cerrando el flujo entre ambos proveedores externos.</p>
+          </li>
+        </ol>
+
+        <div class="professional-case__evidence">
+          <div>
+            <span>Mi responsabilidad</span>
+            <p>Implementación del recorrido completo de sincronización: consulta, transformación y envío de los datos.</p>
+          </div>
+          <div>
+            <span>Decisión técnica</span>
+            <p>Aislar la adaptación en un transformer para separar los contratos de Booking y GIATA del resto del sistema.</p>
+          </div>
+          <div>
+            <span>Resultado</span>
+            <p>Un flujo definido de pull, transformación y push para sincronizar información entre los dos proveedores.</p>
+          </div>
+        </div>
+
+        <footer class="professional-case__footer">
+          <ul aria-label="Conceptos aplicados en la integración">
+            <li>Integración de APIs</li>
+            <li>Data mapping</li>
+            <li>Transformers</li>
+            <li>Pull / Push</li>
+          </ul>
+          <p>Se omiten nombres internos, arquitectura y datos operativos por confidencialidad.</p>
+        </footer>
+      </article>
     </section>
 
     <section id="stack" class="section shell" aria-labelledby="stack-title">
