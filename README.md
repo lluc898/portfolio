@@ -28,6 +28,7 @@ La web presenta experiencia profesional, proyectos, stack técnico y forma de tr
 ## Características
 
 - Contenido orientado a recruiters y equipos de ingeniería.
+- Experiencia profesional explicada mediante áreas de contribución y casos concretos.
 - Arquitectura estática, sin JavaScript de aplicación innecesario.
 - Diseño responsive con tema claro y oscuro.
 - Navegación por teclado, foco visible y soporte para `prefers-reduced-motion`.
