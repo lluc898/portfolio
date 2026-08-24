@@ -1170,36 +1170,6 @@ button:focus-visible {
   font-size: 0.87rem;
 }
 
-.approach-grid {
-  display: grid;
-  border-top: 1px solid var(--text);
-}
-
-.approach-grid article {
-  border-bottom: 1px solid var(--border);
-  padding: 1.5rem 0 2rem;
-}
-
-.approach-grid span {
-  color: var(--accent);
-  font-family: "JetBrains Mono Variable", monospace;
-  font-size: 0.6rem;
-}
-
-.approach-grid h3 {
-  margin: 2.5rem 0 0.75rem;
-  font-size: 1.15rem;
-  font-weight: 620;
-  letter-spacing: -0.02em;
-}
-
-.approach-grid p {
-  max-width: 20rem;
-  margin: 0;
-  color: var(--muted);
-  font-size: 0.86rem;
-}
-
 .contact-section {
   border-top: 1px solid var(--border);
   background: var(--surface);
@@ -1445,8 +1415,7 @@ button:focus-visible {
     grid-column: auto;
   }
 
-  .stack-grid,
-  .approach-grid {
+  .stack-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
@@ -1512,24 +1481,6 @@ button:focus-visible {
     padding-right: 0;
   }
 
-  .approach-grid {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-  }
-
-  .approach-grid article {
-    min-height: 16rem;
-    border-right: 1px solid var(--border);
-    padding: 1.5rem 2.5rem 2rem;
-  }
-
-  .approach-grid article:first-child {
-    padding-left: 0;
-  }
-
-  .approach-grid article:last-child {
-    border-right: 0;
-    padding-right: 0;
-  }
 }
 
 @media (max-width: 30rem) {
