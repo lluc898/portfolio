@@ -41,6 +41,9 @@ jobs:
       - name: Validate SEO metadata
         run: npm run check:seo
 
+      - name: Validate links and CTAs
+        run: npm run check:links
+
   deploy:
     name: Deploy production
     if: github.event_name == 'push' && github.ref == 'refs/heads/main'
