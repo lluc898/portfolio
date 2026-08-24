@@ -11,7 +11,7 @@ permissions:
 
 concurrency:
   group: ci-${{ github.workflow }}-${{ github.ref }}
-  cancel-in-progress: true
+  cancel-in-progress: false
 
 jobs:
   validate:
@@ -37,3 +37,29 @@ jobs:
 
       - name: Build production site
         run: npm run build
+
+  deploy:
+    name: Deploy production
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    needs: validate
+    runs-on: [self-hosted, Linux, X64, portfolio]
+    timeout-minutes: 15
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v7
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v7
+        with:
+          node-version: 24
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build production site
+        run: npm run build
+
+      - name: Activate release
+        run: bash deploy/deploy.sh dist /home/lluc/apps/portfolio

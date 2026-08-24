@@ -84,6 +84,12 @@ El servidor de desarrollo estará disponible en `http://localhost:4321`.
 | `npm run build` | Genera la versión de producción en `dist/` |
 | `npm run preview` | Sirve el build localmente |
 
+## Despliegue
+
+Cada push a `main` ejecuta primero las comprobaciones y el build en GitHub Actions. Si terminan correctamente, un runner autoservido en el servidor genera una release, actualiza el enlace `current`, recrea el contenedor de Nginx y espera a que su healthcheck confirme el despliegue. Si la nueva release no queda saludable, el script restaura automáticamente la anterior.
+
+La publicación se realiza en `/home/lluc/apps/portfolio` mediante [`deploy/deploy.sh`](./deploy/deploy.sh). Las releases anteriores se conservan para facilitar una recuperación manual.
+
 ## Estructura
 
 ```text
