@@ -752,6 +752,58 @@ button:focus-visible {
   line-height: 1.7;
 }
 
+.featured-project__gallery {
+  display: grid;
+  gap: 1rem;
+  border-bottom: 1px solid var(--border);
+  padding-block: clamp(1.5rem, 4vw, 2.5rem);
+}
+
+.featured-project__gallery figure {
+  min-width: 0;
+  margin: 0;
+}
+
+.featured-project__gallery a {
+  display: block;
+  overflow: hidden;
+  border: 1px solid var(--border);
+  border-radius: 0.55rem;
+  background: #080a10;
+}
+
+.featured-project__gallery img {
+  display: block;
+  width: 100%;
+  height: auto;
+  transition: transform 300ms cubic-bezier(0.2, 0.7, 0.2, 1), opacity 180ms ease;
+}
+
+.featured-project__gallery a:hover img {
+  transform: scale(1.012);
+  opacity: 0.9;
+}
+
+.featured-project__gallery figcaption {
+  display: grid;
+  gap: 0.55rem;
+  padding-top: 0.9rem;
+}
+
+.featured-project__gallery figcaption span {
+  color: var(--accent);
+  font-family: "JetBrains Mono Variable", monospace;
+  font-size: 0.59rem;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+}
+
+.featured-project__gallery figcaption p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.78rem;
+}
+
 .featured-project__details,
 .featured-project__scope {
   display: grid;
@@ -1324,6 +1376,11 @@ button:focus-visible {
 
   .featured-project__details {
     grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .featured-project__gallery {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1.25rem;
   }
 
   .professional-case__intro {

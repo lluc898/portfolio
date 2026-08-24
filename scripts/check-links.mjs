@@ -74,6 +74,8 @@ for (const requiredHref of [
   "https://github.com/lluc898",
   "https://github.com/lluc898/neonweb",
   "https://neonledspain.llucbosch.com/",
+  "https://neonledspain.llucbosch.com/productos",
+  "https://neonledspain.llucbosch.com/personalizar",
 ]) {
   assert(homepage.includes(`href="${requiredHref}"`), `Required conversion link is missing: ${requiredHref}`);
 }

@@ -2,6 +2,9 @@
 import BaseLayout from "../layouts/BaseLayout.astro";
 import Header from "../components/Header.astro";
 import SectionHeading from "../components/SectionHeading.astro";
+import { Image } from "astro:assets";
+import neonCatalog from "../assets/projects/neon-catalog.png";
+import neonCustomizer from "../assets/projects/neon-customizer.png";
 
 const stackGroups = [
   { label: "Backend", technologies: ["Python", "Django", "Flask"] },
@@ -176,6 +179,43 @@ const stackGroups = [
           <p class="featured-project__lead">
             Una tienda online especializada en neones LED personalizados. El producto combina catálogo, configuración visual, precio en vivo, carrito, solicitudes a medida y un panel de gestión.
           </p>
+        </div>
+
+        <div id="neon-gallery" class="featured-project__gallery" data-reveal>
+          <figure>
+            <a href="https://neonledspain.llucbosch.com/productos" target="_blank" rel="noopener noreferrer">
+              <Image
+                src={neonCatalog}
+                alt="Catálogo de Neon Led Spain con filtros por categoría, productos y precios"
+                widths={[560, 840, 1120]}
+                sizes="(min-width: 768px) 50vw, 100vw"
+                format="webp"
+                quality={80}
+                loading="lazy"
+              />
+            </a>
+            <figcaption>
+              <span>01 / Catálogo</span>
+              <p>Productos, categorías y precios de partida en una vista filtrable.</p>
+            </figcaption>
+          </figure>
+          <figure>
+            <a href="https://neonledspain.llucbosch.com/personalizar" target="_blank" rel="noopener noreferrer">
+              <Image
+                src={neonCustomizer}
+                alt="Configurador de Neon Led Spain con previsualización, opciones y precio estimado"
+                widths={[560, 840, 1120]}
+                sizes="(min-width: 768px) 50vw, 100vw"
+                format="webp"
+                quality={80}
+                loading="lazy"
+              />
+            </a>
+            <figcaption>
+              <span>02 / Configurador</span>
+              <p>Preview, tipografía, color y precio estimado dentro del mismo flujo.</p>
+            </figcaption>
+          </figure>
         </div>
 
         <div class="featured-project__details">
