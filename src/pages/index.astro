@@ -353,40 +353,48 @@ const stackGroups = [
     <section id="ia" class="section shell" aria-labelledby="ai-title">
       <SectionHeading id="ai-title" index="05" label="AI-assisted development" title="IA integrada en el proceso, no separada de la ingeniería." />
       <div class="ai-layout">
-        <div class="ai-intro" data-reveal>
-          <div class="ai-metric" aria-label="Tres áreas de control especializado">
-            <strong>3</strong>
-            <span>controles</span>
-          </div>
-          <p>verificación, seguridad y pruebas unitarias</p>
-          <div class="ai-tools">
+        <aside id="ai-evidence" class="ai-evidence" aria-labelledby="ai-evidence-title" data-reveal>
+          <p class="ai-evidence__eyebrow">Evidencia pública</p>
+          <h3 id="ai-evidence-title">Controles visibles en este repositorio.</h3>
+          <p>El despliegue solo se ejecuta cuando todas las validaciones terminan correctamente.</p>
+          <ul class="ai-checks">
+            <li><code>astro check</code><span>Astro + TypeScript</span></li>
+            <li><code>astro build</code><span>Build de producción</span></li>
+            <li><code>check:seo</code><span>Metadatos e indexación</span></li>
+            <li><code>check:links</code><span>Enlaces y CTA</span></li>
+          </ul>
+          <footer class="ai-evidence__footer">
             <span>Claude CLI</span>
-          </div>
-        </div>
+            <a href="https://github.com/lluc898/portfolio/blob/main/.github/workflows/ci.yml" target="_blank" rel="noopener noreferrer">
+              Ver workflow
+              <svg viewBox="0 0 18 18" aria-hidden="true"><path d="M6 12 12 6M7 6h5v5"></path></svg>
+            </a>
+          </footer>
+        </aside>
         <div class="ai-content" data-reveal>
           <p class="ai-lead">
-            Utilizo Claude CLI desde terminal para acelerar exploración, implementación y debugging. El código generado queda rodeado por agentes estrictos especializados en verificación, seguridad y pruebas unitarias, manteniendo siempre la revisión humana y la responsabilidad sobre cada cambio.
+            Utilizo Claude CLI desde terminal para acelerar exploración, implementación y debugging. Agentes y skills especializados revisan el resultado desde perspectivas distintas; la decisión final y la responsabilidad sobre cada cambio siguen siendo mías.
           </p>
           <ol class="workflow">
             <li>
-              <span class="workflow__index">01 / Verificación</span>
-              <h3>Revisar el código</h3>
-              <p>Agentes estrictos comprueban la implementación, detectan inconsistencias y contrastan el resultado con la tarea original.</p>
+              <span class="workflow__index">01 / Contexto</span>
+              <h3>Delimitar antes de generar</h3>
+              <p>Primero se inspeccionan el código existente, las dependencias y los criterios de aceptación para acotar la tarea.</p>
             </li>
             <li>
-              <span class="workflow__index">02 / Seguridad</span>
-              <h3>Buscar riesgos</h3>
-              <p>Agentes especializados revisan el cambio desde una perspectiva de seguridad antes de darlo por válido.</p>
+              <span class="workflow__index">02 / Implementación</span>
+              <h3>Cambiar dentro del sistema</h3>
+              <p>Claude CLI ayuda a implementar y depurar manteniendo el cambio alineado con los patrones del proyecto.</p>
             </li>
             <li>
-              <span class="workflow__index">03 / Pruebas</span>
-              <h3>Cubrir el comportamiento</h3>
-              <p>Agentes centrados en pruebas unitarias comprueban los casos relevantes y ayudan a detectar regresiones.</p>
+              <span class="workflow__index">03 / Revisión independiente</span>
+              <h3>Buscar fallos desde varios ángulos</h3>
+              <p>Agentes especializados comprueban la implementación, la seguridad y la cobertura de los comportamientos relevantes.</p>
             </li>
             <li>
-              <span class="workflow__index">04 / Loop</span>
-              <h3>Refinar hasta cerrar</h3>
-              <p>Los hallazgos vuelven al ciclo de implementación y revisión hasta obtener un resultado técnicamente sólido.</p>
+              <span class="workflow__index">04 / Cierre humano</span>
+              <h3>Verificar, decidir y entregar</h3>
+              <p>Los hallazgos vuelven al ciclo; el diff y las validaciones se revisan antes de aceptar y desplegar el resultado.</p>
             </li>
           </ol>
         </div>

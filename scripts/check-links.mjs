@@ -73,6 +73,7 @@ for (const requiredHref of [
   "https://www.linkedin.com/in/lluc-bosch-ramis-80959b213/",
   "https://github.com/lluc898",
   "https://github.com/lluc898/neonweb",
+  "https://github.com/lluc898/portfolio/blob/main/.github/workflows/ci.yml",
   "https://neonledspain.llucbosch.com/",
   "https://neonledspain.llucbosch.com/productos",
   "https://neonledspain.llucbosch.com/personalizar",

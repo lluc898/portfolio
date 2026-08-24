@@ -658,8 +658,7 @@ button:focus-visible {
   padding-block: 1.15rem;
 }
 
-.experience__stack span,
-.ai-tools span {
+.experience__stack span {
   border: 1px solid var(--border);
   border-radius: 0.28rem;
   padding: 0.34rem 0.5rem;
@@ -1075,42 +1074,100 @@ button:focus-visible {
   padding-top: 2rem;
 }
 
-.ai-intro {
+.ai-evidence {
   align-self: start;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  padding: clamp(1.25rem, 3vw, 2rem);
 }
 
-.ai-metric {
-  display: flex;
-  align-items: baseline;
-  gap: 0.65rem;
-}
-
-.ai-metric strong {
-  font-size: clamp(6rem, 17vw, 11rem);
-  font-weight: 700;
-  letter-spacing: -0.08em;
-  line-height: 0.8;
-}
-
-.ai-metric span {
+.ai-evidence__eyebrow {
+  margin: 0 0 1.25rem;
   color: var(--accent);
   font-family: "JetBrains Mono Variable", monospace;
-  font-size: 0.75rem;
-  letter-spacing: 0.1em;
+  font-size: 0.62rem;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
 }
 
-.ai-intro > p {
-  max-width: 16rem;
-  margin: 1.25rem 0 1.5rem;
-  color: var(--muted);
-  font-size: 0.85rem;
+.ai-evidence h3 {
+  max-width: 22rem;
+  margin: 0;
+  font-size: clamp(1.35rem, 3vw, 2rem);
+  font-weight: 620;
+  letter-spacing: -0.035em;
+  line-height: 1.15;
 }
 
-.ai-tools {
+.ai-evidence > p:not(.ai-evidence__eyebrow) {
+  max-width: 25rem;
+  margin: 1rem 0 1.5rem;
+  color: var(--muted);
+  font-size: 0.84rem;
+  line-height: 1.65;
+}
+
+.ai-checks {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.ai-checks li {
   display: flex;
-  flex-wrap: wrap;
-  gap: 0.4rem;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1rem;
+  border-top: 1px solid var(--border);
+  padding-block: 0.8rem;
+}
+
+.ai-checks code {
+  color: var(--text);
+  font-family: "JetBrains Mono Variable", monospace;
+  font-size: 0.68rem;
+}
+
+.ai-checks span {
+  color: var(--muted);
+  font-size: 0.72rem;
+  text-align: right;
+}
+
+.ai-evidence__footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  border-top: 1px solid var(--text);
+  margin-top: 0.35rem;
+  padding-top: 1.2rem;
+}
+
+.ai-evidence__footer > span {
+  border: 1px solid var(--border);
+  border-radius: 0.28rem;
+  padding: 0.34rem 0.5rem;
+  color: var(--muted);
+  font-family: "JetBrains Mono Variable", monospace;
+  font-size: 0.56rem;
+}
+
+.ai-evidence__footer a {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  font-size: 0.72rem;
+  font-weight: 620;
+}
+
+.ai-evidence__footer svg {
+  width: 1rem;
+  fill: none;
+  stroke: currentColor;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 1.5;
 }
 
 .ai-lead {
