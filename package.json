@@ -3,11 +3,16 @@
   "type": "module",
   "version": "1.0.0",
   "private": true,
+  "engines": {
+    "node": ">=24.8.0",
+    "npm": ">=9.6.5"
+  },
   "scripts": {
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
     "check": "astro check",
+    "check:a11y": "html-validate --preset recommended,a11y \"dist/**/*.html\"",
     "check:seo": "node scripts/check-seo.mjs",
     "check:links": "node scripts/check-links.mjs"
   },
@@ -21,6 +26,7 @@
   },
   "devDependencies": {
     "@astrojs/check": "^0.9.10",
+    "html-validate": "^11.10.0",
     "typescript": "^6.0.3"
   }
 }

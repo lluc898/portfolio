@@ -33,6 +33,7 @@ La web presenta experiencia profesional, proyectos, stack técnico y forma de tr
 - Arquitectura estática, sin JavaScript de aplicación innecesario.
 - Diseño responsive con tema claro y oscuro.
 - Navegación por teclado, foco visible y soporte para `prefers-reduced-motion`.
+- Validación automática del HTML y de reglas de accesibilidad sobre el build generado.
 - SEO técnico con canonical, Open Graph, Twitter Cards, sitemap y datos estructurados.
 - Página 404 propia y configuración de producción con Nginx y Docker Compose.
 - Validación automática de tipos y build en cada push y pull request.
@@ -64,7 +65,7 @@ La sección de proyectos incluye además un caso profesional anonimizado sobre s
 
 ## Desarrollo local
 
-Necesitas Node.js `>=22.12.0` y npm `>=9.6.5`.
+Necesitas Node.js `>=24.8.0` y npm `>=9.6.5`.
 
 ```bash
 git clone https://github.com/lluc898/portfolio.git
@@ -82,6 +83,7 @@ El servidor de desarrollo estará disponible en `http://localhost:4321`.
 | `npm run dev` | Inicia el entorno de desarrollo |
 | `npm run check` | Comprueba Astro y TypeScript |
 | `npm run build` | Genera la versión de producción en `dist/` |
+| `npm run check:a11y` | Valida el HTML generado y sus reglas de accesibilidad |
 | `npm run check:seo` | Valida metadatos, tarjetas sociales, JSON-LD, sitemap y robots |
 | `npm run check:links` | Comprueba enlaces internos, recursos, CTA y destinos esenciales |
 | `npm run preview` | Sirve el build localmente |
