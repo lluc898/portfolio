@@ -82,6 +82,7 @@ El servidor de desarrollo estará disponible en `http://localhost:4321`.
 | `npm run dev` | Inicia el entorno de desarrollo |
 | `npm run check` | Comprueba Astro y TypeScript |
 | `npm run build` | Genera la versión de producción en `dist/` |
+| `npm run check:seo` | Valida metadatos, tarjetas sociales, JSON-LD, sitemap y robots |
 | `npm run preview` | Sirve el build localmente |
 
 ## Despliegue

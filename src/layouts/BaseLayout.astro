@@ -8,6 +8,7 @@ interface Props {
   description?: string;
   canonicalPath?: string;
   robots?: string;
+  includeProfileSchema?: boolean;
 }
 
 const {
@@ -15,40 +16,52 @@ const {
   description = "Portfolio de Lluc Bosch Ramis, Software Engineer especializado en tecnología hotelera y flujos profesionales de desarrollo asistido por IA.",
   canonicalPath = Astro.url.pathname,
   robots = "index, follow",
+  includeProfileSchema = true,
 } = Astro.props;
 
 const canonicalUrl = new URL(canonicalPath, Astro.site);
 const socialImage = new URL("/og-image.png", Astro.site);
+const socialImageAlt = "Lluc Bosch Ramis, Software Engineer especializado en tecnología hotelera y desarrollo web";
 
-const personSchema = {
+const profileSchema = {
   "@context": "https://schema.org",
-  "@type": "Person",
-  name: "Lluc Bosch Ramis",
-  jobTitle: "Software Engineer",
-  url: "https://llucbosch.com",
-  email: "mailto:lluc.bosch@gmail.com",
-  address: {
-    "@type": "PostalAddress",
-    addressCountry: "ES",
+  "@type": "ProfilePage",
+  "@id": "https://llucbosch.com/#profile-page",
+  url: "https://llucbosch.com/",
+  name: title,
+  description,
+  mainEntity: {
+    "@type": "Person",
+    "@id": "https://llucbosch.com/#person",
+    name: "Lluc Bosch Ramis",
+    jobTitle: "Software Engineer",
+    description: "Software Engineer especializado en desarrollo web y tecnología para el sector hotelero.",
+    url: "https://llucbosch.com/",
+    email: "mailto:lluc.bosch@gmail.com",
+    address: {
+      "@type": "PostalAddress",
+      addressCountry: "ES",
+    },
+    sameAs: [
+      "https://www.linkedin.com/in/lluc-bosch-ramis-80959b213/",
+      "https://github.com/lluc898",
+    ],
+    knowsAbout: [
+      "Desarrollo web",
+      "Python",
+      "Django",
+      "Flask",
+      "React",
+      "JavaScript",
+      "MySQL",
+      "MongoDB",
+      "Tecnología para el sector hotelero",
+      "Motores de reserva",
+      "Integraciones con canales hoteleros",
+      "Desarrollo de software asistido por IA",
+    ],
+    knowsLanguage: ["es", "ca", "en"],
   },
-  sameAs: [
-    "https://www.linkedin.com/in/lluc-bosch-ramis-80959b213/",
-    "https://github.com/lluc898",
-  ],
-  knowsAbout: [
-    "Desarrollo web",
-    "Python",
-    "Django",
-    "Flask",
-    "React",
-    "JavaScript",
-    "MySQL",
-    "MongoDB",
-    "Tecnología para el sector hotelero",
-    "Motores de reserva",
-    "Integraciones con canales hoteleros",
-    "Desarrollo de software asistido por IA",
-  ],
 };
 ---
 
@@ -59,6 +72,7 @@ const personSchema = {
     <meta name="viewport" content="width=device-width" />
     <meta name="generator" content={Astro.generator} />
     <meta name="description" content={description} />
+    <meta name="author" content="Lluc Bosch Ramis" />
     <meta name="robots" content={robots} />
     <meta name="theme-color" content="#f7f7f5" />
 
@@ -73,14 +87,19 @@ const personSchema = {
     <meta property="og:description" content={description} />
     <meta property="og:url" content={canonicalUrl} />
     <meta property="og:image" content={socialImage} />
-    <meta property="og:image:alt" content="Lluc Bosch Ramis — Software Engineer" />
+    <meta property="og:image:secure_url" content={socialImage} />
+    <meta property="og:image:type" content="image/png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content={socialImageAlt} />
 
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={socialImage} />
+    <meta name="twitter:image:alt" content={socialImageAlt} />
 
-    <script is:inline type="application/ld+json" set:html={JSON.stringify(personSchema)} />
+    {includeProfileSchema && <script is:inline type="application/ld+json" set:html={JSON.stringify(profileSchema)} />}
     <script is:inline>
       document.documentElement.classList.add("js");
       const savedTheme = localStorage.getItem("theme");
