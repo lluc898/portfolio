@@ -34,6 +34,7 @@ La web presenta experiencia profesional, proyectos, stack técnico y forma de tr
 - Diseño responsive con tema claro y oscuro.
 - Navegación por teclado, foco visible y soporte para `prefers-reduced-motion`.
 - Validación automática del HTML y de reglas de accesibilidad sobre el build generado.
+- Pruebas E2E de los recorridos principales en escritorio y móvil.
 - SEO técnico con canonical, Open Graph, Twitter Cards, sitemap y datos estructurados.
 - Página 404 propia y configuración de producción con Nginx y Docker Compose.
 - Validación automática de tipos y build en cada push y pull request.
@@ -86,6 +87,7 @@ El servidor de desarrollo estará disponible en `http://localhost:4321`.
 | `npm run check:a11y` | Valida el HTML generado y sus reglas de accesibilidad |
 | `npm run check:seo` | Valida metadatos, tarjetas sociales, JSON-LD, sitemap y robots |
 | `npm run check:links` | Comprueba enlaces internos, recursos, CTA y destinos esenciales |
+| `npm run test:e2e` | Compila y prueba los recorridos principales en Chromium |
 | `npm run preview` | Sirve el build localmente |
 
 ## Despliegue
@@ -106,6 +108,8 @@ src/
 public/           Favicon, robots e imagen social
 cv/               Fuente HTML del CV profesional
 deploy/           Configuración de Nginx y Docker Compose
+scripts/          Validaciones y servidor estático para pruebas
+tests/e2e/        Recorridos de recruiter en escritorio y móvil
 ```
 
 Las decisiones de producto y diseño están documentadas en [CODEX.md](./CODEX.md) y [DESIGN.md](./DESIGN.md).

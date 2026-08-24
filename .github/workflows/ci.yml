@@ -41,6 +41,12 @@ jobs:
       - name: Validate HTML and accessibility
         run: npm run check:a11y
 
+      - name: Install Chromium
+        run: npx playwright install --with-deps chromium
+
+      - name: Test recruiter journeys
+        run: npm run test:e2e
+
       - name: Validate SEO metadata
         run: npm run check:seo
 
