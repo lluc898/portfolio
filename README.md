@@ -35,6 +35,7 @@ La web presenta experiencia profesional, proyectos, stack técnico y forma de tr
 - Navegación por teclado, foco visible y soporte para `prefers-reduced-motion`.
 - Validación automática del HTML y de reglas de accesibilidad sobre el build generado.
 - Pruebas E2E de los recorridos principales en escritorio y móvil.
+- Presupuestos Lighthouse para rendimiento, accesibilidad, buenas prácticas y SEO.
 - SEO técnico con canonical, Open Graph, Twitter Cards, sitemap y datos estructurados.
 - Página 404 propia y configuración de producción con Nginx y Docker Compose.
 - Validación automática de tipos y build en cada push y pull request.
@@ -85,6 +86,7 @@ El servidor de desarrollo estará disponible en `http://localhost:4321`.
 | `npm run check` | Comprueba Astro y TypeScript |
 | `npm run build` | Genera la versión de producción en `dist/` |
 | `npm run check:a11y` | Valida el HTML generado y sus reglas de accesibilidad |
+| `npm run check:lighthouse` | Aplica presupuestos de calidad y rendimiento con Lighthouse |
 | `npm run check:seo` | Valida metadatos, tarjetas sociales, JSON-LD, sitemap y robots |
 | `npm run check:links` | Comprueba enlaces internos, recursos, CTA y destinos esenciales |
 | `npm run test:e2e` | Compila y prueba los recorridos principales en Chromium |
