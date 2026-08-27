@@ -40,7 +40,7 @@ La web presenta experiencia profesional, proyectos, stack técnico y forma de tr
 - Página 404 propia y configuración de producción con Nginx y Docker Compose.
 - Validación automática de tipos y build en cada push y pull request.
 
-## Proyecto destacado
+## Proyectos destacados
 
 ### Neon Led Spain
 
@@ -52,7 +52,17 @@ El caso de estudio del portfolio explica el problema del producto, la solución 
 - [Abrir demo](https://neonledspain.llucbosch.com/)
 - [Consultar código](https://github.com/lluc898/neonweb)
 
-La sección de proyectos incluye además un caso profesional anonimizado sobre sincronización de datos entre proveedores hoteleros, descrito como un flujo `Pull → Transform → Push` sin exponer información interna.
+### Futmondo Telegram Bot
+
+Proyecto personal en Python y Flask que conecta una liga real de Futmondo con Telegram para consultar mercado y finanzas, gestionar pujas mediante botones y recibir resúmenes programados.
+
+El caso muestra el impacto sin atribuir métricas no medidas y aporta evidencia pública de integración de APIs, webhooks protegidos, procesos programados, pruebas automatizadas y despliegue con Docker.
+
+- [Ver caso de estudio](https://llucbosch.com/#futmondo-bot)
+- [Consultar código y capturas](https://github.com/lluc898/futmondojobs)
+- [Revisar CI](https://github.com/lluc898/futmondojobs/actions/workflows/ci.yml)
+
+La sección de proyectos incluye también un caso profesional anonimizado sobre sincronización de datos entre proveedores hoteleros, descrito como un flujo `Pull → Transform → Push` sin exponer información interna.
 
 ## Stack
 

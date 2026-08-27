@@ -25,6 +25,23 @@ test("offers a downloadable CV", async ({ page, request }) => {
   expect(response.headers()["content-type"]).toContain("application/pdf");
 });
 
+test("presents Futmondo as a personal project with public evidence", async ({ page }) => {
+  await page.goto("/#futmondo-bot");
+
+  const project = page.locator("#futmondo-bot");
+  await expect(project.getByText("Proyecto personal", { exact: true })).toBeVisible();
+  await expect(project.getByRole("heading", { name: "Futmondo Telegram Bot" })).toBeVisible();
+  await expect(project.getByText("Impacto demostrado", { exact: true })).toBeVisible();
+  await expect(project.getByRole("link", { name: "Ver código" })).toHaveAttribute(
+    "href",
+    "https://github.com/lluc898/futmondojobs",
+  );
+  await expect(project.getByRole("link", { name: "Ver CI" })).toHaveAttribute(
+    "href",
+    "https://github.com/lluc898/futmondojobs/actions/workflows/ci.yml",
+  );
+});
+
 test("persists the selected color theme", async ({ page }) => {
   await page.goto("/");
   await page.evaluate(() => localStorage.setItem("theme", "light"));

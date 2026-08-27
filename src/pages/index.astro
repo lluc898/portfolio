@@ -5,6 +5,9 @@ import SectionHeading from "../components/SectionHeading.astro";
 import { Image } from "astro:assets";
 import neonCatalog from "../assets/projects/neon-catalog.png";
 import neonCustomizer from "../assets/projects/neon-customizer.png";
+import futmondoMarket from "../assets/projects/futmondo-market.webp";
+import futmondoBid from "../assets/projects/futmondo-bid.webp";
+import futmondoBudget from "../assets/projects/futmondo-budget.webp";
 
 const stackGroups = [
   { label: "Backend", technologies: ["Python", "Django", "Flask"] },
@@ -269,11 +272,138 @@ const stackGroups = [
         </footer>
       </article>
 
+      <article id="futmondo-bot" class="featured-project featured-project--secondary" data-reveal>
+        <header class="featured-project__header">
+          <div class="featured-project__meta">
+            <span>Proyecto personal</span>
+            <span>02 / Futmondo Telegram Bot</span>
+          </div>
+          <span class="featured-project__status">
+            <span aria-hidden="true"></span>
+            Uso real · Código público
+          </span>
+        </header>
+
+        <div class="featured-project__intro">
+          <div>
+            <p class="featured-project__type">Backend · Integraciones · Automatización</p>
+            <h3>Futmondo Telegram Bot</h3>
+          </div>
+          <p class="featured-project__lead">
+            Un bot privado que conecta una liga de Futmondo con Telegram para consultar el mercado y las finanzas, gestionar pujas y recibir resúmenes programados sin repetir el recorrido manual en la aplicación.
+          </p>
+        </div>
+
+        <div class="featured-project__gallery featured-project__gallery--three" data-reveal>
+          <figure>
+            <a href="https://github.com/lluc898/futmondojobs#el-bot-en-acción" target="_blank" rel="noopener noreferrer">
+              <Image
+                src={futmondoMarket}
+                alt="Mensaje de Telegram con un jugador de Futmondo y botones para aumentar la puja"
+                widths={[480, 720, 960]}
+                sizes="(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw"
+                format="webp"
+                quality={82}
+                loading="lazy"
+              />
+            </a>
+            <figcaption>
+              <span>01 / Mercado</span>
+              <p>Datos del jugador y acciones de puja desde el mismo mensaje.</p>
+            </figcaption>
+          </figure>
+          <figure>
+            <a href="https://github.com/lluc898/futmondojobs#el-bot-en-acción" target="_blank" rel="noopener noreferrer">
+              <Image
+                src={futmondoBid}
+                alt="Confirmación en Telegram de una puja realizada mediante el bot de Futmondo"
+                widths={[480, 720, 960]}
+                sizes="(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw"
+                format="webp"
+                quality={82}
+                loading="lazy"
+              />
+            </a>
+            <figcaption>
+              <span>02 / Operación</span>
+              <p>Confirmación inmediata del incremento y el importe enviado.</p>
+            </figcaption>
+          </figure>
+          <figure>
+            <a href="https://github.com/lluc898/futmondojobs#el-bot-en-acción" target="_blank" rel="noopener noreferrer">
+              <Image
+                src={futmondoBudget}
+                alt="Resumen de presupuesto, pujas y balance de un equipo de Futmondo en Telegram"
+                widths={[480, 720, 960]}
+                sizes="(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw"
+                format="webp"
+                quality={82}
+                loading="lazy"
+              />
+            </a>
+            <figcaption>
+              <span>03 / Finanzas</span>
+              <p>Presupuesto, saldo retenido y puja máxima actualizados.</p>
+            </figcaption>
+          </figure>
+        </div>
+
+        <div class="featured-project__details">
+          <div>
+            <span>01 / Problema</span>
+            <h4>Demasiados pasos para una consulta frecuente</h4>
+            <p>Revisar el mercado, calcular incrementos y comprobar el saldo exigía alternar constantemente entre operaciones relacionadas.</p>
+          </div>
+          <div>
+            <span>02 / Solución</span>
+            <h4>El flujo completo dentro de Telegram</h4>
+            <p>Comandos, botones interactivos y resúmenes programados concentran consultas y operaciones sin automatizar decisiones sensibles.</p>
+          </div>
+          <div>
+            <span>03 / Decisiones</span>
+            <h4>Aislar integraciones y procesos</h4>
+            <p>El cliente encapsula la API externa; Flask recibe webhooks verificados y el scheduler se ejecuta separado de Gunicorn para evitar tareas duplicadas.</p>
+          </div>
+        </div>
+
+        <div class="featured-project__scope">
+          <div>
+            <span>Impacto demostrado</span>
+            <p>Proyecto personal utilizado en una liga real: centraliza consultas, incrementos de puja y actualización del saldo, eliminando esos pasos manuales sin atribuir métricas no medidas.</p>
+          </div>
+          <div>
+            <span>Calidad verificable</span>
+            <p>CI público, servicios externos simulados y una suite automatizada que cubre API, dominio, bot, scheduler y manejo de errores.</p>
+          </div>
+        </div>
+
+        <footer class="featured-project__footer">
+          <ul aria-label="Tecnologías utilizadas en Futmondo Telegram Bot">
+            <li>Python</li>
+            <li>Flask</li>
+            <li>Telegram API</li>
+            <li>APScheduler</li>
+            <li>MongoDB</li>
+            <li>Docker</li>
+          </ul>
+          <div class="featured-project__actions">
+            <a class="button button--primary" href="https://github.com/lluc898/futmondojobs" target="_blank" rel="noopener noreferrer">
+              Ver código
+              <svg viewBox="0 0 18 18" aria-hidden="true"><path d="M6 12 12 6M7 6h5v5"></path></svg>
+            </a>
+            <a class="button button--secondary" href="https://github.com/lluc898/futmondojobs/actions/workflows/ci.yml" target="_blank" rel="noopener noreferrer">
+              Ver CI
+              <svg viewBox="0 0 18 18" aria-hidden="true"><path d="M6 12 12 6M7 6h5v5"></path></svg>
+            </a>
+          </div>
+        </footer>
+      </article>
+
       <article id="caso-integraciones" class="professional-case" data-reveal>
         <header class="professional-case__header">
           <div class="professional-case__meta">
             <span>Caso profesional anonimizado</span>
-            <span>02 / Integración de datos hoteleros</span>
+            <span>03 / Integración de datos hoteleros</span>
           </div>
           <span>Booking → GIATA</span>
         </header>
