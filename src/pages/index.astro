@@ -8,6 +8,7 @@ import neonCustomizer from "../assets/projects/neon-customizer.png";
 import futmondoMarket from "../assets/projects/futmondo-market.webp";
 import futmondoBid from "../assets/projects/futmondo-bid.webp";
 import futmondoBudget from "../assets/projects/futmondo-budget.webp";
+import profilePortrait from "../assets/profile/lluc-bosch-ramis.webp";
 
 const stackGroups = [
   { label: "Backend", technologies: ["Python", "Django", "Flask"] },
@@ -80,6 +81,17 @@ const stackGroups = [
     <section id="perfil" class="section shell" aria-labelledby="profile-title">
       <SectionHeading id="profile-title" index="01" label="Perfil" title="Ingeniería web con contexto de producto y responsabilidad sobre el código." />
       <div class="profile-layout">
+        <div class="profile-portrait" data-reveal>
+          <Image
+            src={profilePortrait}
+            alt="Retrato de Lluc Bosch Ramis"
+            widths={[240, 360, 512]}
+            sizes="(min-width: 1024px) 16rem, (min-width: 768px) 30vw, 70vw"
+            format="webp"
+            quality={86}
+            loading="lazy"
+          />
+        </div>
         <div class="profile-copy prose" data-reveal>
           <p>
             Soy Software Engineer especializado en desarrollo web. Desde 2022 trabajo en aplicaciones utilizadas en entornos reales, participando tanto en backend como en frontend y en la evolución continua de sistemas existentes.

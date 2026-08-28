@@ -4,6 +4,7 @@ test("presents the profile and opens the featured projects", async ({ page }) =>
   await page.goto("/");
 
   await expect(page.getByRole("heading", { level: 1, name: /Lluc Bosch\s*Ramis/ })).toBeVisible();
+  await expect(page.getByRole("img", { name: "Retrato de Lluc Bosch Ramis" })).toBeVisible();
 
   const projectsCta = page.getByRole("link", { name: "Ver proyectos" });
   await expect(projectsCta).toHaveAttribute("href", "#proyectos");

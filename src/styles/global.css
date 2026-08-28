@@ -484,6 +484,26 @@ button:focus-visible {
   gap: 3rem;
 }
 
+.profile-portrait {
+  width: min(70vw, 16rem);
+  aspect-ratio: 4 / 5;
+  justify-self: center;
+  overflow: hidden;
+  border: 1px solid var(--border);
+  border-radius: 0.5rem;
+  background:
+    linear-gradient(145deg, color-mix(in srgb, var(--accent), transparent 88%), transparent 52%),
+    var(--surface);
+}
+
+.profile-portrait img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center bottom;
+}
+
 .prose {
   color: var(--muted);
   font-size: clamp(1rem, 2vw, 1.18rem);
@@ -1416,11 +1436,24 @@ button:focus-visible {
     gap: clamp(3rem, 7vw, 7rem);
   }
 
-  .profile-layout,
   .experience__body,
   .ai-layout,
   .featured-project__intro {
     grid-template-columns: minmax(0, 1fr) minmax(20rem, 1fr);
+  }
+
+  .profile-layout {
+    grid-template-columns: minmax(12rem, 0.65fr) minmax(0, 1.35fr);
+  }
+
+  .profile-portrait {
+    grid-row: 1 / span 2;
+    align-self: start;
+  }
+
+  .profile-copy,
+  .profile-facts {
+    grid-column: 2;
   }
 
   .featured-project__details {
