@@ -37,7 +37,7 @@ La web presenta experiencia profesional, proyectos, stack técnico y forma de tr
 - Pruebas E2E de los recorridos principales en escritorio y móvil.
 - Presupuestos Lighthouse para rendimiento, accesibilidad, buenas prácticas y SEO.
 - SEO técnico con canonical, Open Graph, Twitter Cards, sitemap y datos estructurados.
-- Página 404 propia y configuración de producción con Nginx y Docker Compose.
+- Página 404 propia y configuración de producción versionada para Vercel.
 - Validación automática de tipos y build en cada push y pull request.
 
 ## Proyectos destacados
@@ -72,7 +72,7 @@ La sección de proyectos incluye también un caso profesional anonimizado sobre 
 | Lenguaje | [TypeScript](https://www.typescriptlang.org/) |
 | Estilos | [Tailwind CSS](https://tailwindcss.com/) + CSS |
 | Tipografía | Inter Variable + JetBrains Mono Variable |
-| Producción | Nginx + Docker Compose |
+| Producción | Vercel + integración con GitHub |
 | Calidad | Astro Check + GitHub Actions |
 
 ## Desarrollo local
@@ -104,9 +104,9 @@ El servidor de desarrollo estará disponible en `http://localhost:4321`.
 
 ## Despliegue
 
-Cada push a `main` ejecuta primero las comprobaciones y el build en GitHub Actions. Si terminan correctamente, un runner autoservido en el servidor genera una release, actualiza el enlace `current`, recrea el contenedor de Nginx y espera a que su healthcheck confirme el despliegue. Si la nueva release no queda saludable, el script restaura automáticamente la anterior.
+El repositorio está conectado directamente a Vercel. Cada pull request genera un despliegue de preview y cada push a `main` actualiza producción automáticamente. GitHub Actions mantiene en paralelo las comprobaciones de tipos, build, accesibilidad, recorridos E2E, Lighthouse, SEO y enlaces.
 
-La publicación se realiza en `/home/lluc/apps/portfolio` mediante [`deploy/deploy.sh`](./deploy/deploy.sh). Las releases anteriores se conservan para facilitar una recuperación manual.
+La configuración de build, rutas, caché y cabeceras de seguridad está versionada en [`vercel.json`](./vercel.json). El dominio canónico de producción es [llucbosch.com](https://llucbosch.com).
 
 ## Estructura
 
@@ -119,7 +119,7 @@ src/
 
 public/           Favicon, robots e imagen social
 cv/               Fuente HTML del CV profesional
-deploy/           Configuración de Nginx y Docker Compose
+vercel.json       Configuración de despliegue y cabeceras en Vercel
 scripts/          Validaciones y servidor estático para pruebas
 tests/e2e/        Recorridos de recruiter en escritorio y móvil
 ```
