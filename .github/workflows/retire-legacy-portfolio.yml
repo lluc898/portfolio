@@ -81,5 +81,9 @@ jobs:
         run: |
           set -Eeuo pipefail
           if systemctl list-unit-files llucbosch-cert-renew.timer --no-legend | grep -q '^llucbosch-cert-renew.timer'; then
-            sudo -n systemctl disable --now llucbosch-cert-renew.timer
+            if sudo -n true 2>/dev/null; then
+              sudo -n systemctl disable --now llucbosch-cert-renew.timer
+            else
+              echo "::warning::Run 'sudo systemctl disable --now llucbosch-cert-renew.timer' manually on the server."
+            fi
           fi
