@@ -32,6 +32,7 @@ La web presenta experiencia profesional, proyectos, stack técnico y forma de tr
 - CV profesional en PDF, descargable desde el hero y la sección de contacto.
 - Arquitectura estática, sin JavaScript de aplicación innecesario.
 - Diseño responsive con tema claro y oscuro.
+- Contenido completo en español e inglés, con rutas estáticas y selector de idioma.
 - Navegación por teclado, foco visible y soporte para `prefers-reduced-motion`.
 - Validación automática del HTML y de reglas de accesibilidad sobre el build generado.
 - Pruebas E2E de los recorridos principales en escritorio y móvil.
@@ -117,7 +118,7 @@ La configuración de build, rutas, caché y cabeceras de seguridad está version
 src/
 ├── components/   Componentes reutilizables
 ├── layouts/      Layout, metadatos y datos estructurados
-├── pages/        Homepage y página 404
+├── pages/        Homepages localizadas y página 404
 └── styles/       Sistema visual global
 
 public/           Favicon, robots e imagen social

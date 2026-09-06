@@ -168,6 +168,7 @@ button:focus-visible {
   transform-origin: left;
 }
 
+.language-switch,
 .icon-button,
 .menu-button {
   display: inline-flex;
@@ -181,10 +182,20 @@ button:focus-visible {
   cursor: pointer;
 }
 
+.language-switch {
+  width: 2.4rem;
+  font-family: "JetBrains Mono Variable", monospace;
+  font-size: 0.65rem;
+  font-weight: 650;
+  letter-spacing: 0.06em;
+  text-decoration: none;
+}
+
 .icon-button {
   width: 2.4rem;
 }
 
+.language-switch:hover,
 .icon-button:hover,
 .menu-button:hover {
   border-color: var(--border-strong);

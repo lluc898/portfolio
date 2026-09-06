@@ -1,7 +1,7 @@
 import { readFile } from "node:fs/promises";
 import { join } from "node:path";
 
-const pages = ["index.html", "404.html"];
+const pages = ["index.html", "en/index.html", "404.html"];
 
 for (const page of pages) {
   const html = await readFile(join("dist", page), "utf8");

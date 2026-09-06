@@ -6,6 +6,7 @@ const root = process.cwd();
 const dist = resolve(root, "dist");
 const pages = [
   { path: "/", file: "index.html" },
+  { path: "/en", file: "en/index.html" },
   { path: "/404", file: "404.html" },
 ];
 
@@ -65,7 +66,7 @@ for (const page of loadedPages) {
   }
 }
 
-const homepage = loadedPages[0].html;
+const [homepage, englishHomepage] = loadedPages.map(({ html }) => html);
 for (const requiredHref of [
   "#proyectos",
   "/cv-lluc-bosch-ramis.pdf",
@@ -81,11 +82,18 @@ for (const requiredHref of [
   "https://neonledspain.llucbosch.com/personalizar",
 ]) {
   assert(homepage.includes(`href="${requiredHref}"`), `Required conversion link is missing: ${requiredHref}`);
+  assert(englishHomepage.includes(`href="${requiredHref}"`), `Required English conversion link is missing: ${requiredHref}`);
 }
 
 assert(
   /<a\b[^>]*href="\/cv-lluc-bosch-ramis\.pdf"[^>]*download[^>]*>/.test(homepage),
   "The CV link must retain its download behavior.",
 );
+assert(
+  /<a\b[^>]*href="\/cv-lluc-bosch-ramis\.pdf"[^>]*download[^>]*>/.test(englishHomepage),
+  "The English CV link must retain its download behavior.",
+);
+assert(homepage.includes('href="/en"'), "The Spanish page must link to the English version.");
+assert(englishHomepage.includes('href="/"'), "The English page must link to the Spanish version.");
 
 console.log("Link and CTA validation passed.");

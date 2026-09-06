@@ -5,38 +5,55 @@ import Analytics from "@vercel/analytics/astro";
 import "../styles/global.css";
 
 interface Props {
+  locale?: "es" | "en";
   title?: string;
   description?: string;
   canonicalPath?: string;
   robots?: string;
   includeProfileSchema?: boolean;
+  includeLanguageAlternates?: boolean;
 }
 
 const {
-  title = "Lluc Bosch Ramis — Software Engineer",
-  description = "Portfolio de Lluc Bosch Ramis, Software Engineer especializado en tecnología hotelera y flujos profesionales de desarrollo asistido por IA.",
+  locale = "es",
+  title: providedTitle,
+  description: providedDescription,
   canonicalPath = Astro.url.pathname,
   robots = "index, follow",
   includeProfileSchema = true,
+  includeLanguageAlternates = true,
 } = Astro.props;
 
+const isEnglish = locale === "en";
+const title = providedTitle ?? "Lluc Bosch Ramis — Software Engineer";
+const description = providedDescription ?? (isEnglish
+  ? "Portfolio of Lluc Bosch Ramis, a Software Engineer specialising in hospitality technology and professional AI-assisted development workflows."
+  : "Portfolio de Lluc Bosch Ramis, Software Engineer especializado en tecnología hotelera y flujos profesionales de desarrollo asistido por IA.");
+
 const canonicalUrl = new URL(canonicalPath, Astro.site);
+const spanishUrl = new URL("/", Astro.site);
+const englishUrl = new URL("/en", Astro.site);
 const socialImage = new URL("/og-image.png", Astro.site);
-const socialImageAlt = "Lluc Bosch Ramis, Software Engineer especializado en tecnología hotelera y desarrollo web";
+const socialImageAlt = isEnglish
+  ? "Lluc Bosch Ramis, Software Engineer specialising in hospitality technology and web development"
+  : "Lluc Bosch Ramis, Software Engineer especializado en tecnología hotelera y desarrollo web";
 
 const profileSchema = {
   "@context": "https://schema.org",
   "@type": "ProfilePage",
-  "@id": "https://llucbosch.com/#profile-page",
-  url: "https://llucbosch.com/",
+  "@id": `${canonicalUrl.href}#profile-page`,
+  url: canonicalUrl.href,
   name: title,
   description,
+  inLanguage: locale,
   mainEntity: {
     "@type": "Person",
     "@id": "https://llucbosch.com/#person",
     name: "Lluc Bosch Ramis",
     jobTitle: "Software Engineer",
-    description: "Software Engineer especializado en desarrollo web y tecnología para el sector hotelero.",
+    description: isEnglish
+      ? "Software Engineer specialising in web development and technology for the hospitality industry."
+      : "Software Engineer especializado en desarrollo web y tecnología para el sector hotelero.",
     url: "https://llucbosch.com/",
     email: "mailto:lluc.bosch@gmail.com",
     address: {
@@ -48,7 +65,7 @@ const profileSchema = {
       "https://github.com/lluc898",
     ],
     knowsAbout: [
-      "Desarrollo web",
+      isEnglish ? "Web development" : "Desarrollo web",
       "Python",
       "Django",
       "Flask",
@@ -56,10 +73,10 @@ const profileSchema = {
       "JavaScript",
       "MySQL",
       "MongoDB",
-      "Tecnología para el sector hotelero",
-      "Motores de reserva",
-      "Integraciones con canales hoteleros",
-      "Desarrollo de software asistido por IA",
+      isEnglish ? "Hospitality technology" : "Tecnología para el sector hotelero",
+      isEnglish ? "Booking engines" : "Motores de reserva",
+      isEnglish ? "Hotel channel integrations" : "Integraciones con canales hoteleros",
+      isEnglish ? "AI-assisted software development" : "Desarrollo de software asistido por IA",
     ],
     knowsLanguage: ["es", "ca", "en"],
   },
@@ -67,7 +84,7 @@ const profileSchema = {
 ---
 
 <!doctype html>
-<html lang="es" class="scroll-smooth">
+<html lang={locale} class="scroll-smooth">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
@@ -79,10 +96,14 @@ const profileSchema = {
 
     <title>{title}</title>
     <link rel="canonical" href={canonicalUrl} />
+    {includeLanguageAlternates && <link rel="alternate" hreflang="es" href={spanishUrl} />}
+    {includeLanguageAlternates && <link rel="alternate" hreflang="en" href={englishUrl} />}
+    {includeLanguageAlternates && <link rel="alternate" hreflang="x-default" href={spanishUrl} />}
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 
     <meta property="og:type" content="website" />
-    <meta property="og:locale" content="es_ES" />
+    <meta property="og:locale" content={isEnglish ? "en_GB" : "es_ES"} />
+    <meta property="og:locale:alternate" content={isEnglish ? "es_ES" : "en_GB"} />
     <meta property="og:site_name" content="Lluc Bosch Ramis" />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
@@ -113,7 +134,7 @@ const profileSchema = {
     </script>
   </head>
   <body>
-    <a class="skip-link" href="#contenido">Saltar al contenido</a>
+    <a class="skip-link" href="#contenido">{isEnglish ? "Skip to content" : "Saltar al contenido"}</a>
     <slot />
 
     <script>

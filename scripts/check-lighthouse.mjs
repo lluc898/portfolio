@@ -5,7 +5,11 @@ import * as chromeLauncher from "chrome-launcher";
 import lighthouse from "lighthouse";
 
 const port = 4324;
-const url = `http://127.0.0.1:${port}/`;
+const origin = `http://127.0.0.1:${port}`;
+const pages = [
+  { label: "Spanish", path: "/" },
+  { label: "English", path: "/en" },
+];
 const categoryBudgets = {
   performance: 0.95,
   accessibility: 1,
@@ -18,7 +22,7 @@ async function waitForServer(server) {
     if (server.exitCode !== null) throw new Error("The Lighthouse static server exited before becoming ready.");
 
     try {
-      const response = await fetch(url);
+      const response = await fetch(`${origin}/`);
       if (response.ok) return;
     } catch {
       // The server is still starting.
@@ -44,29 +48,32 @@ try {
     chromeFlags: ["--headless=new", "--no-sandbox", "--disable-gpu", "--disable-dev-shm-usage"],
   });
 
-  const result = await lighthouse(url, {
-    logLevel: "error",
-    onlyCategories: Object.keys(categoryBudgets),
-    output: "json",
-    port: chrome.port,
-  });
-
-  if (!result) throw new Error("Lighthouse did not return an audit result.");
-
   const failures = [];
-  for (const [category, minimum] of Object.entries(categoryBudgets)) {
-    const score = result.lhr.categories[category]?.score ?? 0;
-    console.log(`${category}: ${Math.round(score * 100)}`);
-    if (score < minimum) failures.push(`${category} must score at least ${Math.round(minimum * 100)}`);
+  for (const page of pages) {
+    const result = await lighthouse(`${origin}${page.path}`, {
+      logLevel: "error",
+      onlyCategories: Object.keys(categoryBudgets),
+      output: "json",
+      port: chrome.port,
+    });
+
+    if (!result) throw new Error(`Lighthouse did not return an audit result for ${page.path}.`);
+
+    console.log(`${page.label} (${page.path})`);
+    for (const [category, minimum] of Object.entries(categoryBudgets)) {
+      const score = result.lhr.categories[category]?.score ?? 0;
+      console.log(`${category}: ${Math.round(score * 100)}`);
+      if (score < minimum) failures.push(`${page.label} ${category} must score at least ${Math.round(minimum * 100)}`);
+    }
+
+    const lcp = result.lhr.audits["largest-contentful-paint"].numericValue;
+    const cls = result.lhr.audits["cumulative-layout-shift"].numericValue;
+    console.log(`largest-contentful-paint: ${Math.round(lcp)} ms`);
+    console.log(`cumulative-layout-shift: ${cls.toFixed(3)}`);
+
+    if (lcp > 2_500) failures.push(`${page.label} largest-contentful-paint must not exceed 2500 ms`);
+    if (cls > 0.1) failures.push(`${page.label} cumulative-layout-shift must not exceed 0.1`);
   }
-
-  const lcp = result.lhr.audits["largest-contentful-paint"].numericValue;
-  const cls = result.lhr.audits["cumulative-layout-shift"].numericValue;
-  console.log(`largest-contentful-paint: ${Math.round(lcp)} ms`);
-  console.log(`cumulative-layout-shift: ${cls.toFixed(3)}`);
-
-  if (lcp > 2_500) failures.push("largest-contentful-paint must not exceed 2500 ms");
-  if (cls > 0.1) failures.push("cumulative-layout-shift must not exceed 0.1");
 
   if (failures.length > 0) throw new Error(`Lighthouse budgets failed:\n- ${failures.join("\n- ")}`);
 } finally {

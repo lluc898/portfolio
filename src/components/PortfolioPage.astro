@@ -1,0 +1,639 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Header from "../components/Header.astro";
+import SectionHeading from "../components/SectionHeading.astro";
+import { Image } from "astro:assets";
+import neonCatalog from "../assets/projects/neon-catalog.png";
+import neonCustomizer from "../assets/projects/neon-customizer.png";
+import futmondoMarket from "../assets/projects/futmondo-market.webp";
+import futmondoBid from "../assets/projects/futmondo-bid.webp";
+import futmondoBudget from "../assets/projects/futmondo-budget.webp";
+import profilePortrait from "../assets/profile/lluc-bosch-ramis.webp";
+
+interface Props {
+  locale?: "es" | "en";
+}
+
+const { locale = "es" } = Astro.props;
+const isEnglish = locale === "en";
+const t = (spanish: string, english: string) => (isEnglish ? english : spanish);
+
+const stackGroups = [
+  { label: "Backend", technologies: ["Python", "Django", "Flask"] },
+  { label: "Frontend", technologies: ["JavaScript", "React", "HTML", "Jinja", "CSS", "Sass"] },
+  { label: t("Datos", "Data"), technologies: ["MySQL", "MongoDB"] },
+  { label: t("Infraestructura y herramientas", "Infrastructure and tools"), technologies: ["Apache", "Git", "Jira"] },
+];
+
+---
+
+<BaseLayout locale={locale} canonicalPath={isEnglish ? "/en" : "/"}>
+  <Header locale={locale} />
+
+  <main id="contenido">
+    <section id="inicio" class="hero shell" aria-labelledby="hero-title">
+      <div class="hero-grid" aria-hidden="true"></div>
+      <div class="hero-copy" data-reveal>
+        <div class="eyebrow">
+          <span class="status-dot"></span>
+          {t("Software Engineer · España", "Software Engineer · Spain")}
+        </div>
+        <h1 id="hero-title">Lluc Bosch<br />Ramis<span class="accent">.</span></h1>
+        <p>
+          {t(
+            "Construyo y evoluciono aplicaciones web para el sector hotelero —del backend al frontend— e integro IA en procesos de ingeniería con criterio técnico y control sobre el resultado.",
+            "I build and evolve web applications for the hospitality industry—from backend to frontend—and integrate AI into engineering workflows with technical judgement and control over the outcome.",
+          )}
+        </p>
+        <div class="hero-actions">
+          <a class="button button--primary" href="#proyectos">
+            {t("Ver proyectos", "View projects")}
+            <svg viewBox="0 0 18 18" aria-hidden="true"><path d="M4 9h10M10 5l4 4-4 4"></path></svg>
+          </a>
+          <a class="button button--secondary" href="/cv-lluc-bosch-ramis.pdf" download>
+            {t("Descargar CV", "Download CV")}
+            <svg viewBox="0 0 18 18" aria-hidden="true"><path d="M9 3v9M5.5 8.5 9 12l3.5-3.5M4 15h10"></path></svg>
+          </a>
+          <a class="button button--secondary" href="mailto:lluc.bosch@gmail.com">
+            {t("Contactar", "Contact me")}
+            <svg viewBox="0 0 18 18" aria-hidden="true"><path d="M4 9h10M10 5l4 4-4 4"></path></svg>
+          </a>
+          <a class="button button--secondary" href="https://www.linkedin.com/in/lluc-bosch-ramis-80959b213/" target="_blank" rel="noopener noreferrer">
+            LinkedIn
+            <svg viewBox="0 0 18 18" aria-hidden="true"><path d="M6 12 12 6M7 6h5v5"></path></svg>
+          </a>
+        </div>
+      </div>
+
+      <aside class="hero-index" aria-label={t("Áreas de trabajo", "Areas of work")} data-reveal>
+        <div class="hero-index__header">
+          <span>Engineering index</span>
+          <span>39.57° N / 2.65° E</span>
+        </div>
+        <ol>
+          <li><span>01</span><strong>Hotel products</strong><small>Build · Evolve</small></li>
+          <li><span>02</span><strong>Booking engines</strong><small>Web · Data</small></li>
+          <li><span>03</span><strong>Integrations</strong><small>Channels · Providers</small></li>
+          <li><span>04</span><strong>AI workflows</strong><small>Agents · Tests · Loops</small></li>
+        </ol>
+        <div class="hero-index__footer">
+          <span>Input</span>
+          <span class="index-line"></span>
+          <span>Verified output</span>
+        </div>
+      </aside>
+
+      <div class="hero-foot" aria-hidden="true">
+        <span>Portfolio / 2026</span>
+        <span>Scroll to inspect</span>
+      </div>
+    </section>
+
+    <section id="perfil" class="section shell" aria-labelledby="profile-title">
+      <SectionHeading
+        id="profile-title"
+        index="01"
+        label={t("Perfil", "Profile")}
+        title={t(
+          "Ingeniería web con contexto de producto y responsabilidad sobre el código.",
+          "Web engineering grounded in product context and ownership of the code.",
+        )}
+      />
+      <div class="profile-layout">
+        <div class="profile-portrait" data-reveal>
+          <Image
+            src={profilePortrait}
+            alt={t("Retrato de Lluc Bosch Ramis", "Portrait of Lluc Bosch Ramis")}
+            widths={[240, 360, 512]}
+            sizes="(min-width: 1024px) 16rem, (min-width: 768px) 30vw, 70vw"
+            format="webp"
+            quality={86}
+            loading="lazy"
+          />
+        </div>
+        <div class="profile-copy prose" data-reveal>
+          <p>
+            {t(
+              "Soy Software Engineer especializado en desarrollo web. Desde 2022 trabajo en aplicaciones utilizadas en entornos reales, participando tanto en backend como en frontend y en la evolución continua de sistemas existentes.",
+              "I am a Software Engineer specialising in web development. Since 2022, I have worked on applications used in real-world environments, contributing across backend and frontend and to the continuous evolution of existing systems.",
+            )}
+          </p>
+          <p>
+            {t(
+              "He desarrollado un conocimiento amplio del sector hotelero trabajando en productos para hoteles, motores de reserva e integraciones con canales y proveedores externos como Booking y GIATA. Me interesa entender ese contexto antes de cambiar el código: cómo encaja una pieza, qué puede romperse y cómo comprobar que la solución responde al problema real.",
+              "I have developed broad hospitality-industry knowledge by working on hotel products, booking engines, and integrations with external channels and providers such as Booking and GIATA. I make a point of understanding that context before changing the code: how each piece fits, what might break, and how to verify that the solution addresses the real problem.",
+            )}
+          </p>
+        </div>
+        <dl class="profile-facts" data-reveal>
+          <div><dt>{t("Enfoque", "Focus")}</dt><dd>Backend + Frontend</dd></div>
+          <div><dt>{t("Entorno", "Environment")}</dt><dd>{t("Aplicaciones web en producción", "Production web applications")}</dd></div>
+          <div><dt>{t("Sector", "Industry")}</dt><dd>{t("Tecnología hotelera", "Hospitality technology")}</dd></div>
+          <div><dt>{t("Base", "Based in")}</dt><dd>{t("España", "Spain")}</dd></div>
+          <div><dt>{t("Idiomas", "Languages")}</dt><dd>{t("Castellano · Catalán · Inglés", "Spanish · Catalan · English")}</dd></div>
+        </dl>
+      </div>
+    </section>
+
+    <section id="experiencia" class="section shell" aria-labelledby="experience-title">
+      <SectionHeading
+        id="experience-title"
+        index="02"
+        label={t("Experiencia", "Experience")}
+        title={t(
+          "Trabajo profesional sobre sistemas que deben seguir funcionando.",
+          "Professional work on systems that must keep running.",
+        )}
+      />
+      <article class="experience" data-reveal>
+        <header class="experience__header">
+          <p class="experience__date">{t("07/2022 — Actualidad", "07/2022 — Present")}</p>
+          <div>
+            <p class="experience__company">Dingus</p>
+            <h3>Software Engineer</h3>
+          </div>
+          <span class="experience__number" aria-hidden="true">01</span>
+        </header>
+        <div class="experience__body">
+          <div class="experience__summary prose">
+            <p>
+              {t(
+                "Desde 2022 desarrollo y evoluciono productos web para el sector hotelero. Trabajo sobre aplicaciones existentes que deben seguir funcionando mientras incorporan nuevas funcionalidades, integraciones y cambios de producto.",
+                "Since 2022, I have built and evolved web products for the hospitality industry. I work on existing applications that must remain operational while new features, integrations, and product changes are introduced.",
+              )}
+            </p>
+            <p>
+              {t(
+                "Mi ámbito abarca servicios backend, interfaces frontend, persistencia de datos y comunicación con sistemas externos. Esto requiere entender el flujo completo antes de modificarlo y comprobar el comportamiento después de cada cambio.",
+                "My scope spans backend services, frontend interfaces, data persistence, and communication with external systems. This requires understanding the complete flow before modifying it and verifying behaviour after every change.",
+              )}
+            </p>
+            <a class="experience-case-link" href="#caso-integraciones">
+              {t("Ver caso de integración", "View integration case study")}
+              <svg viewBox="0 0 18 18" aria-hidden="true"><path d="M4 9h10M10 5l4 4-4 4"></path></svg>
+            </a>
+          </div>
+          <ul class="responsibility-list" aria-label={t("Áreas de contribución profesional", "Areas of professional contribution")}>
+            <li>
+              <span>01</span>
+              <div>
+                <strong>{t("Evolución de producto", "Product evolution")}</strong>
+                <p>{t("Mantenimiento, diagnóstico e implementación de funcionalidades en productos para hoteles y motores de reserva.", "Maintenance, diagnosis, and feature development for hotel products and booking engines.")}</p>
+              </div>
+            </li>
+            <li>
+              <span>02</span>
+              <div>
+                <strong>{t("Integraciones externas", "External integrations")}</strong>
+                <p>{t("Implementación de flujos de consulta, transformación y envío de datos entre proveedores como Booking y GIATA.", "Implementation of data retrieval, transformation, and delivery flows between providers such as Booking and GIATA.")}</p>
+              </div>
+            </li>
+            <li>
+              <span>03</span>
+              <div>
+                <strong>{t("Entrega full-stack", "Full-stack delivery")}</strong>
+                <p>{t("Desarrollo backend con Python, Django y Flask; frontend con React y JavaScript; persistencia con MySQL y MongoDB.", "Backend development with Python, Django, and Flask; frontend with React and JavaScript; persistence with MySQL and MongoDB.")}</p>
+              </div>
+            </li>
+            <li>
+              <span>04</span>
+              <div>
+                <strong>{t("Desarrollo asistido por IA", "AI-assisted development")}</strong>
+                <p>{t("Uso de agentes, skills y ciclos de revisión para implementar, verificar, revisar seguridad y cubrir el comportamiento con pruebas.", "Use of agents, skills, and review cycles to implement, verify, review security, and cover behaviour with tests.")}</p>
+              </div>
+            </li>
+          </ul>
+        </div>
+        <footer class="experience__stack">
+          <span>Python</span><span>Django</span><span>Flask</span><span>React</span><span>JavaScript</span><span>MySQL</span><span>MongoDB</span><span>Apache</span><span>Git</span><span>Jira</span>
+        </footer>
+      </article>
+    </section>
+
+    <section id="proyectos" class="section shell" aria-labelledby="projects-title">
+      <SectionHeading
+        id="projects-title"
+        index="03"
+        label={t("Proyectos", "Projects")}
+        title={t("Productos construidos para resolver problemas concretos.", "Products built to solve concrete problems.")}
+      />
+
+      <article class="featured-project" data-reveal>
+        <header class="featured-project__header">
+          <div class="featured-project__meta">
+            <span>{t("Proyecto destacado", "Featured project")}</span>
+            <span>01 / Neon Led Spain</span>
+          </div>
+          <span class="featured-project__status">
+            <span aria-hidden="true"></span>
+            {t("Demo pública · En evolución", "Public demo · In development")}
+          </span>
+        </header>
+
+        <div class="featured-project__intro">
+          <div>
+            <p class="featured-project__type">{t("E-commerce · Configurador de producto", "E-commerce · Product customiser")}</p>
+            <h3>Neon Led Spain</h3>
+          </div>
+          <p class="featured-project__lead">
+            {t(
+              "Una tienda online especializada en neones LED personalizados. El producto combina catálogo, configuración visual, precio en vivo, carrito, solicitudes a medida y un panel de gestión.",
+              "An online store specialising in custom LED neon signs. The product combines a catalogue, visual configuration, live pricing, a shopping cart, bespoke requests, and a management dashboard.",
+            )}
+          </p>
+        </div>
+
+        <div id="neon-gallery" class="featured-project__gallery" data-reveal>
+          <figure>
+            <a href="https://neonledspain.llucbosch.com/productos" target="_blank" rel="noopener noreferrer">
+              <Image
+                src={neonCatalog}
+                alt={t("Catálogo de Neon Led Spain con filtros por categoría, productos y precios", "Neon Led Spain catalogue with category filters, products, and prices")}
+                widths={[560, 840, 1120]}
+                sizes="(min-width: 768px) 50vw, 100vw"
+                format="webp"
+                quality={80}
+                loading="lazy"
+              />
+            </a>
+            <figcaption>
+              <span>{t("01 / Catálogo", "01 / Catalogue")}</span>
+              <p>{t("Productos, categorías y precios de partida en una vista filtrable.", "Products, categories, and starting prices in a filterable view.")}</p>
+            </figcaption>
+          </figure>
+          <figure>
+            <a href="https://neonledspain.llucbosch.com/personalizar" target="_blank" rel="noopener noreferrer">
+              <Image
+                src={neonCustomizer}
+                alt={t("Configurador de Neon Led Spain con previsualización, opciones y precio estimado", "Neon Led Spain customiser with preview, options, and estimated price")}
+                widths={[560, 840, 1120]}
+                sizes="(min-width: 768px) 50vw, 100vw"
+                format="webp"
+                quality={80}
+                loading="lazy"
+              />
+            </a>
+            <figcaption>
+              <span>{t("02 / Configurador", "02 / Customiser")}</span>
+              <p>{t("Preview, tipografía, color y precio estimado dentro del mismo flujo.", "Preview, typeface, colour, and estimated price within a single flow.")}</p>
+            </figcaption>
+          </figure>
+        </div>
+
+        <div class="featured-project__details">
+          <div>
+            <span>{t("01 / Problema", "01 / Problem")}</span>
+            <h4>{t("Comprar un producto que todavía no existe", "Buying a product that does not yet exist")}</h4>
+            <p>{t("Un neón personalizado no encaja en un catálogo convencional: antes de comprar, el usuario necesita definir texto, estilo y medidas, visualizar el resultado y conocer su precio.", "A custom neon sign does not fit a conventional catalogue: before purchasing, users need to define the text, style, and dimensions, preview the result, and know its price.")}</p>
+          </div>
+          <div>
+            <span>{t("02 / Solución", "02 / Solution")}</span>
+            <h4>{t("Configuración y gestión en un mismo producto", "Configuration and management in one product")}</h4>
+            <p>{t("El flujo permite personalizar el neón con preview y precio en vivo, añadirlo al carrito o enviar un diseño propio, mientras el área administrativa centraliza productos, precios, pedidos y solicitudes.", "The flow lets users customise a neon sign with a live preview and price, add it to their cart, or submit their own design, while the administration area centralises products, pricing, orders, and requests.")}</p>
+          </div>
+          <div>
+            <span>{t("03 / Decisiones", "03 / Decisions")}</span>
+            <h4>{t("El servidor conserva la fuente de verdad", "The server remains the source of truth")}</h4>
+            <p>{t("El precio se recalcula en servidor antes de persistir el pedido. Prisma y PostgreSQL estructuran el dominio; Supabase gestiona datos y archivos; Docker y Nginx sostienen el despliegue self-hosted.", "Pricing is recalculated on the server before the order is persisted. Prisma and PostgreSQL structure the domain; Supabase handles data and files; Docker and Nginx support the self-hosted deployment.")}</p>
+          </div>
+        </div>
+
+        <div class="featured-project__scope">
+          <div>
+            <span>{t("Ámbito del trabajo", "Scope of work")}</span>
+            <p>{t("Producto · Frontend · Backend · Datos · Despliegue", "Product · Frontend · Backend · Data · Deployment")}</p>
+          </div>
+          <div>
+            <span>{t("Estado actual", "Current status")}</span>
+            <p>{t("Demo funcional; pagos y automatización de emails todavía pendientes.", "Functional demo; payments and email automation are still pending.")}</p>
+          </div>
+        </div>
+
+        <footer class="featured-project__footer">
+          <ul aria-label={t("Tecnologías utilizadas en Neon Led Spain", "Technologies used in Neon Led Spain")}>
+            <li>Next.js</li>
+            <li>TypeScript</li>
+            <li>Prisma</li>
+            <li>PostgreSQL</li>
+            <li>Supabase</li>
+            <li>Docker</li>
+          </ul>
+          <div class="featured-project__actions">
+            <a class="button button--primary" href="https://neonledspain.llucbosch.com/" target="_blank" rel="noopener noreferrer">
+              {t("Ver demo", "View demo")}
+              <svg viewBox="0 0 18 18" aria-hidden="true"><path d="M6 12 12 6M7 6h5v5"></path></svg>
+            </a>
+            <a class="button button--secondary" href="https://github.com/lluc898/neonweb" target="_blank" rel="noopener noreferrer">
+              {t("Ver código", "View code")}
+              <svg viewBox="0 0 18 18" aria-hidden="true"><path d="M6 12 12 6M7 6h5v5"></path></svg>
+            </a>
+          </div>
+        </footer>
+      </article>
+
+      <article id="futmondo-bot" class="featured-project featured-project--secondary" data-reveal>
+        <header class="featured-project__header">
+          <div class="featured-project__meta">
+            <span>{t("Proyecto personal", "Personal project")}</span>
+            <span>02 / Futmondo Telegram Bot</span>
+          </div>
+          <span class="featured-project__status">
+            <span aria-hidden="true"></span>
+            {t("Uso real · Código público", "Real-world use · Public code")}
+          </span>
+        </header>
+
+        <div class="featured-project__intro">
+          <div>
+            <p class="featured-project__type">{t("Backend · Integraciones · Automatización", "Backend · Integrations · Automation")}</p>
+            <h3>Futmondo Telegram Bot</h3>
+          </div>
+          <p class="featured-project__lead">
+            {t(
+              "Un bot privado que conecta una liga de Futmondo con Telegram para consultar el mercado y las finanzas, gestionar pujas y recibir resúmenes programados sin repetir el recorrido manual en la aplicación.",
+              "A private bot that connects a Futmondo league to Telegram to check the market and finances, manage bids, and receive scheduled summaries without repeating the manual journey through the application.",
+            )}
+          </p>
+        </div>
+
+        <div class="featured-project__gallery featured-project__gallery--three" data-reveal>
+          <figure>
+            <a href="https://github.com/lluc898/futmondojobs#el-bot-en-acción" target="_blank" rel="noopener noreferrer">
+              <Image
+                src={futmondoMarket}
+                alt={t("Mensaje de Telegram con un jugador de Futmondo y botones para aumentar la puja", "Telegram message showing a Futmondo player and buttons to increase the bid")}
+                widths={[480, 720, 960]}
+                sizes="(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw"
+                format="webp"
+                quality={82}
+                loading="lazy"
+              />
+            </a>
+            <figcaption>
+              <span>{t("01 / Mercado", "01 / Market")}</span>
+              <p>{t("Datos del jugador y acciones de puja desde el mismo mensaje.", "Player data and bidding actions from the same message.")}</p>
+            </figcaption>
+          </figure>
+          <figure>
+            <a href="https://github.com/lluc898/futmondojobs#el-bot-en-acción" target="_blank" rel="noopener noreferrer">
+              <Image
+                src={futmondoBid}
+                alt={t("Confirmación en Telegram de una puja realizada mediante el bot de Futmondo", "Telegram confirmation of a bid placed through the Futmondo bot")}
+                widths={[480, 720, 960]}
+                sizes="(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw"
+                format="webp"
+                quality={82}
+                loading="lazy"
+              />
+            </a>
+            <figcaption>
+              <span>{t("02 / Operación", "02 / Operation")}</span>
+              <p>{t("Confirmación inmediata del incremento y el importe enviado.", "Immediate confirmation of the increase and submitted amount.")}</p>
+            </figcaption>
+          </figure>
+          <figure>
+            <a href="https://github.com/lluc898/futmondojobs#el-bot-en-acción" target="_blank" rel="noopener noreferrer">
+              <Image
+                src={futmondoBudget}
+                alt={t("Resumen de presupuesto, pujas y balance de un equipo de Futmondo en Telegram", "Telegram summary of a Futmondo team's budget, bids, and balance")}
+                widths={[480, 720, 960]}
+                sizes="(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw"
+                format="webp"
+                quality={82}
+                loading="lazy"
+              />
+            </a>
+            <figcaption>
+              <span>{t("03 / Finanzas", "03 / Finances")}</span>
+              <p>{t("Presupuesto, saldo retenido y puja máxima actualizados.", "Up-to-date budget, reserved balance, and maximum bid.")}</p>
+            </figcaption>
+          </figure>
+        </div>
+
+        <div class="featured-project__details">
+          <div>
+            <span>{t("01 / Problema", "01 / Problem")}</span>
+            <h4>{t("Demasiados pasos para una consulta frecuente", "Too many steps for a frequent task")}</h4>
+            <p>{t("Revisar el mercado, calcular incrementos y comprobar el saldo exigía alternar constantemente entre operaciones relacionadas.", "Reviewing the market, calculating increases, and checking the balance required constantly switching between related operations.")}</p>
+          </div>
+          <div>
+            <span>{t("02 / Solución", "02 / Solution")}</span>
+            <h4>{t("El flujo completo dentro de Telegram", "The complete flow inside Telegram")}</h4>
+            <p>{t("Comandos, botones interactivos y resúmenes programados concentran consultas y operaciones sin automatizar decisiones sensibles.", "Commands, interactive buttons, and scheduled summaries bring queries and operations together without automating sensitive decisions.")}</p>
+          </div>
+          <div>
+            <span>{t("03 / Decisiones", "03 / Decisions")}</span>
+            <h4>{t("Aislar integraciones y procesos", "Isolating integrations and processes")}</h4>
+            <p>{t("El cliente encapsula la API externa; Flask recibe webhooks verificados y el scheduler se ejecuta separado de Gunicorn para evitar tareas duplicadas.", "The client encapsulates the external API; Flask receives verified webhooks, and the scheduler runs separately from Gunicorn to prevent duplicate tasks.")}</p>
+          </div>
+        </div>
+
+        <div class="featured-project__scope">
+          <div>
+            <span>{t("Impacto demostrado", "Demonstrated impact")}</span>
+            <p>{t("Proyecto personal utilizado en una liga real: centraliza consultas, incrementos de puja y actualización del saldo, eliminando esos pasos manuales sin atribuir métricas no medidas.", "A personal project used in a real league: it centralises queries, bid increases, and balance updates, removing those manual steps without claiming unmeasured metrics.")}</p>
+          </div>
+          <div>
+            <span>{t("Calidad verificable", "Verifiable quality")}</span>
+            <p>{t("CI público, servicios externos simulados y una suite automatizada que cubre API, dominio, bot, scheduler y manejo de errores.", "Public CI, mocked external services, and an automated suite covering the API, domain, bot, scheduler, and error handling.")}</p>
+          </div>
+        </div>
+
+        <footer class="featured-project__footer">
+          <ul aria-label={t("Tecnologías utilizadas en Futmondo Telegram Bot", "Technologies used in Futmondo Telegram Bot")}>
+            <li>Python</li>
+            <li>Flask</li>
+            <li>Telegram API</li>
+            <li>APScheduler</li>
+            <li>MongoDB</li>
+            <li>Docker</li>
+          </ul>
+          <div class="featured-project__actions">
+            <a class="button button--primary" href="https://github.com/lluc898/futmondojobs" target="_blank" rel="noopener noreferrer">
+              {t("Ver código", "View code")}
+              <svg viewBox="0 0 18 18" aria-hidden="true"><path d="M6 12 12 6M7 6h5v5"></path></svg>
+            </a>
+            <a class="button button--secondary" href="https://github.com/lluc898/futmondojobs/actions/workflows/ci.yml" target="_blank" rel="noopener noreferrer">
+              {t("Ver CI", "View CI")}
+              <svg viewBox="0 0 18 18" aria-hidden="true"><path d="M6 12 12 6M7 6h5v5"></path></svg>
+            </a>
+          </div>
+        </footer>
+      </article>
+
+      <article id="caso-integraciones" class="professional-case" data-reveal>
+        <header class="professional-case__header">
+          <div class="professional-case__meta">
+            <span>{t("Caso profesional anonimizado", "Anonymised professional case study")}</span>
+            <span>{t("03 / Integración de datos hoteleros", "03 / Hospitality data integration")}</span>
+          </div>
+          <span>Booking → GIATA</span>
+        </header>
+
+        <div class="professional-case__intro">
+          <div>
+            <p class="professional-case__type">{t("APIs externas · Sincronización de datos", "External APIs · Data synchronisation")}</p>
+            <h3>{t("Un flujo para conectar dos modelos de datos distintos.", "A flow connecting two different data models.")}</h3>
+          </div>
+          <p>
+            {t(
+              "Implementé una integración que consulta la API oficial de Booking desde un sistema externo, transforma los datos recibidos al contrato esperado por GIATA y los envía para completar la sincronización.",
+              "I implemented an integration that queries the official Booking API from an external system, transforms the received data into the contract expected by GIATA, and sends it to complete the synchronisation.",
+            )}
+          </p>
+        </div>
+
+        <ol class="integration-flow" aria-label={t("Flujo de sincronización entre Booking y GIATA", "Synchronisation flow between Booking and GIATA")}>
+          <li>
+            <span>01 / Pull</span>
+            <h4>{t("Recoger los datos", "Retrieve the data")}</h4>
+            <p>{t("El sistema de origen consulta la API oficial de Booking y obtiene la información que debe sincronizarse.", "The source system queries the official Booking API and retrieves the information to be synchronised.")}</p>
+          </li>
+          <li>
+            <span>02 / Transform</span>
+            <h4>{t("Adaptar el contrato", "Adapt the contract")}</h4>
+            <p>{t("Un transformer dedicado convierte y organiza los datos de Booking según la estructura requerida por GIATA.", "A dedicated transformer converts and organises Booking data according to the structure required by GIATA.")}</p>
+          </li>
+          <li>
+            <span>03 / Push</span>
+            <h4>{t("Completar la sincronización", "Complete the synchronisation")}</h4>
+            <p>{t("El payload transformado se envía a GIATA, cerrando el flujo entre ambos proveedores externos.", "The transformed payload is sent to GIATA, completing the flow between both external providers.")}</p>
+          </li>
+        </ol>
+
+        <div class="professional-case__evidence">
+          <div>
+            <span>{t("Mi responsabilidad", "My responsibility")}</span>
+            <p>{t("Implementación del recorrido completo de sincronización: consulta, transformación y envío de los datos.", "Implementation of the complete synchronisation journey: data retrieval, transformation, and delivery.")}</p>
+          </div>
+          <div>
+            <span>{t("Decisión técnica", "Technical decision")}</span>
+            <p>{t("Aislar la adaptación en un transformer para separar los contratos de Booking y GIATA del resto del sistema.", "Isolate the adaptation in a transformer to separate the Booking and GIATA contracts from the rest of the system.")}</p>
+          </div>
+          <div>
+            <span>{t("Resultado", "Outcome")}</span>
+            <p>{t("Un flujo definido de pull, transformación y push para sincronizar información entre los dos proveedores.", "A defined pull, transform, and push flow for synchronising information between the two providers.")}</p>
+          </div>
+        </div>
+
+        <footer class="professional-case__footer">
+          <ul aria-label={t("Conceptos aplicados en la integración", "Concepts applied in the integration")}>
+            <li>{t("Integración de APIs", "API integration")}</li>
+            <li>Data mapping</li>
+            <li>Transformers</li>
+            <li>Pull / Push</li>
+          </ul>
+          <p>{t("Se omiten nombres internos, arquitectura y datos operativos por confidencialidad.", "Internal names, architecture, and operational data are omitted for confidentiality.")}</p>
+        </footer>
+      </article>
+    </section>
+
+    <section id="stack" class="section shell" aria-labelledby="stack-title">
+      <SectionHeading
+        id="stack-title"
+        index="04"
+        label="Stack"
+        title={t("Tecnologías elegidas y usadas en trabajo real.", "Technologies selected and used in real-world work.")}
+      />
+      <div class="stack-grid" data-reveal>
+        {stackGroups.map((group, index) => (
+          <article class="stack-group">
+            <header>
+              <span>{String(index + 1).padStart(2, "0")}</span>
+              <h3>{group.label}</h3>
+            </header>
+            <ul>
+              {group.technologies.map((technology) => <li>{technology}</li>)}
+            </ul>
+          </article>
+        ))}
+      </div>
+    </section>
+
+    <section id="ia" class="section shell" aria-labelledby="ai-title">
+      <SectionHeading
+        id="ai-title"
+        index="05"
+        label="AI-assisted development"
+        title={t("IA integrada en el proceso, no separada de la ingeniería.", "AI integrated into the process, not separated from engineering.")}
+      />
+      <div class="ai-layout">
+        <aside id="ai-evidence" class="ai-evidence" aria-labelledby="ai-evidence-title" data-reveal>
+          <p class="ai-evidence__eyebrow">{t("Evidencia pública", "Public evidence")}</p>
+          <h3 id="ai-evidence-title">{t("Controles visibles en este repositorio.", "Visible controls in this repository.")}</h3>
+          <p>{t("El despliegue solo se ejecuta cuando todas las validaciones terminan correctamente.", "Deployment only runs after every validation has completed successfully.")}</p>
+          <ul class="ai-checks">
+            <li><code>check + build</code><span>{t("Tipos y producción", "Types and production")}</span></li>
+            <li><code>check:a11y</code><span>{t("HTML y accesibilidad", "HTML and accessibility")}</span></li>
+            <li><code>test:e2e</code><span>{t("Navegación e interfaz", "Navigation and interface")}</span></li>
+            <li><code>lighthouse</code><span>{t("Calidad y rendimiento", "Quality and performance")}</span></li>
+            <li><code>seo + links</code><span>{t("Metadatos y CTA", "Metadata and CTAs")}</span></li>
+          </ul>
+          <footer class="ai-evidence__footer">
+            <span>Claude CLI</span>
+            <a href="https://github.com/lluc898/portfolio/blob/main/.github/workflows/ci.yml" target="_blank" rel="noopener noreferrer">
+              {t("Ver workflow", "View workflow")}
+              <svg viewBox="0 0 18 18" aria-hidden="true"><path d="M6 12 12 6M7 6h5v5"></path></svg>
+            </a>
+          </footer>
+        </aside>
+        <div class="ai-content" data-reveal>
+          <p class="ai-lead">
+            {t(
+              "Utilizo Claude CLI desde terminal para acelerar exploración, implementación y debugging. Agentes y skills especializados revisan el resultado desde perspectivas distintas; la decisión final y la responsabilidad sobre cada cambio siguen siendo mías.",
+              "I use Claude CLI from the terminal to accelerate exploration, implementation, and debugging. Specialised agents and skills review the outcome from different perspectives; the final decision and responsibility for every change remain mine.",
+            )}
+          </p>
+          <ol class="workflow">
+            <li>
+              <span class="workflow__index">{t("01 / Contexto", "01 / Context")}</span>
+              <h3>{t("Delimitar antes de generar", "Define the scope before generating")}</h3>
+              <p>{t("Primero se inspeccionan el código existente, las dependencias y los criterios de aceptación para acotar la tarea.", "The existing code, dependencies, and acceptance criteria are inspected first to define the task clearly.")}</p>
+            </li>
+            <li>
+              <span class="workflow__index">{t("02 / Implementación", "02 / Implementation")}</span>
+              <h3>{t("Cambiar dentro del sistema", "Change within the system")}</h3>
+              <p>{t("Claude CLI ayuda a implementar y depurar manteniendo el cambio alineado con los patrones del proyecto.", "Claude CLI helps implement and debug while keeping the change aligned with the project's patterns.")}</p>
+            </li>
+            <li>
+              <span class="workflow__index">{t("03 / Revisión independiente", "03 / Independent review")}</span>
+              <h3>{t("Buscar fallos desde varios ángulos", "Look for failures from multiple angles")}</h3>
+              <p>{t("Agentes especializados comprueban la implementación, la seguridad y la cobertura de los comportamientos relevantes.", "Specialised agents check the implementation, security, and coverage of relevant behaviour.")}</p>
+            </li>
+            <li>
+              <span class="workflow__index">{t("04 / Cierre humano", "04 / Human sign-off")}</span>
+              <h3>{t("Verificar, decidir y entregar", "Verify, decide, and deliver")}</h3>
+              <p>{t("Los hallazgos vuelven al ciclo; el diff y las validaciones se revisan antes de aceptar y desplegar el resultado.", "Findings return to the cycle; the diff and validation results are reviewed before the outcome is accepted and deployed.")}</p>
+            </li>
+          </ol>
+        </div>
+      </div>
+    </section>
+
+    <section id="contacto" class="contact-section" aria-labelledby="contact-title">
+      <div class="shell" data-reveal>
+        <div class="contact-meta"><span>06</span><span>{t("Contacto", "Contact")}</span></div>
+        <p class="contact-kicker">{t("¿Hablamos?", "Let's talk")}</p>
+        <h2 id="contact-title">{t("Construyamos algo", "Let's build something")}<br />{t("que tenga sentido", "that makes sense")}<span class="accent">.</span></h2>
+        <a class="contact-email" href="mailto:lluc.bosch@gmail.com">
+          <span>lluc.bosch@gmail.com</span>
+          <svg viewBox="0 0 36 36" aria-hidden="true"><path d="M7 18h22M20 9l9 9-9 9"></path></svg>
+        </a>
+        <div class="contact-links">
+          <a href="/cv-lluc-bosch-ramis.pdf" download>{t("Descargar CV", "Download CV")} <span>↓</span></a>
+          <a href="https://www.linkedin.com/in/lluc-bosch-ramis-80959b213/" target="_blank" rel="noopener noreferrer">LinkedIn <span>↗</span></a>
+          <a href="https://github.com/lluc898" target="_blank" rel="noopener noreferrer">GitHub <span>↗</span></a>
+          <a href="mailto:lluc.bosch@gmail.com">Email <span>↗</span></a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="shell">
+      <div><strong>Lluc Bosch Ramis</strong><span>Software Engineer</span></div>
+      <p>{t("© 2026 · Diseñado y desarrollado con atención al detalle.", "© 2026 · Designed and developed with attention to detail.")}</p>
+      <a href="#inicio">{t("Volver arriba", "Back to top")} <span>↑</span></a>
+    </div>
+  </footer>
+</BaseLayout>

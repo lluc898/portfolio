@@ -1,23 +1,96 @@
+---
+interface Props {
+  locale?: "es" | "en";
+}
+
+const { locale = "es" } = Astro.props;
+const isEnglish = locale === "en";
+const copy = isEnglish
+  ? {
+      profile: "Profile",
+      experience: "Experience",
+      projects: "Projects",
+      stack: "Stack",
+      ai: "AI",
+      contact: "Contact",
+      mainNavigation: "Main navigation",
+      mobileNavigation: "Mobile navigation",
+      menu: "Menu",
+      lightMode: "Enable light mode",
+      darkMode: "Enable dark mode",
+      changeTheme: "Change theme",
+      brandLabel: "LB · Lluc Bosch Ramis · Go to the top",
+      languageLabel: "Ver esta página en español",
+      languageCode: "ES",
+      languagePath: "/",
+      languageTag: "es",
+    }
+  : {
+      profile: "Perfil",
+      experience: "Experiencia",
+      projects: "Proyectos",
+      stack: "Stack",
+      ai: "IA",
+      contact: "Contacto",
+      mainNavigation: "Navegación principal",
+      mobileNavigation: "Navegación móvil",
+      menu: "Menú",
+      lightMode: "Activar modo claro",
+      darkMode: "Activar modo oscuro",
+      changeTheme: "Cambiar tema",
+      brandLabel: "LB · Lluc Bosch Ramis · Ir al inicio",
+      languageLabel: "View this page in English",
+      languageCode: "EN",
+      languagePath: "/en",
+      languageTag: "en",
+    };
+
+const sections = [
+  { href: "#perfil", label: copy.profile },
+  { href: "#experiencia", label: copy.experience },
+  { href: "#proyectos", label: copy.projects },
+  { href: "#stack", label: copy.stack },
+  { href: "#ia", label: copy.ai },
+  { href: "#contacto", label: copy.contact },
+];
+---
+
 <header class="site-header" data-header>
   <div class="shell flex h-[4.5rem] items-center justify-between gap-4">
-    <a class="brand group" href="#inicio" aria-label="LB · Lluc Bosch Ramis · Ir al inicio">
+    <a class="brand group" href="#inicio" aria-label={copy.brandLabel}>
       <span class="brand-mark" aria-hidden="true">LB</span>
       <span class="hidden sm:inline">Lluc Bosch Ramis</span>
     </a>
 
     <div class="flex items-center gap-2">
-      <nav class="hidden lg:block" aria-label="Navegación principal">
+      <nav class="hidden lg:block" aria-label={copy.mainNavigation}>
         <ul class="flex items-center gap-7">
-          <li><a class="nav-link" href="#perfil">Perfil</a></li>
-          <li><a class="nav-link" href="#experiencia">Experiencia</a></li>
-          <li><a class="nav-link" href="#proyectos">Proyectos</a></li>
-          <li><a class="nav-link" href="#stack">Stack</a></li>
-          <li><a class="nav-link" href="#ia">IA</a></li>
-          <li><a class="nav-link" href="#contacto">Contacto</a></li>
+          {sections.map((section) => <li><a class="nav-link" href={section.href}>{section.label}</a></li>)}
         </ul>
       </nav>
 
-      <button class="icon-button" type="button" data-theme-toggle aria-label="Activar modo oscuro" title="Cambiar tema">
+      <a
+        class="language-switch"
+        href={copy.languagePath}
+        hreflang={copy.languageTag}
+        lang={copy.languageTag}
+        aria-label={copy.languageLabel}
+        title={copy.languageLabel}
+        data-language-link
+        data-language-path={copy.languagePath}
+      >
+        {copy.languageCode}
+      </a>
+
+      <button
+        class="icon-button"
+        type="button"
+        data-theme-toggle
+        data-light-label={copy.lightMode}
+        data-dark-label={copy.darkMode}
+        aria-label={copy.darkMode}
+        title={copy.changeTheme}
+      >
         <svg class="theme-icon theme-icon--sun" viewBox="0 0 24 24" aria-hidden="true">
           <circle cx="12" cy="12" r="3.5"></circle>
           <path d="M12 2v2M12 20v2M4.93 4.93l1.42 1.42M17.65 17.65l1.42 1.42M2 12h2M20 12h2M4.93 19.07l1.42-1.42M17.65 6.35l1.42-1.42"></path>
@@ -28,36 +101,42 @@
       </button>
 
       <button class="menu-button lg:hidden" type="button" data-menu-toggle aria-controls="mobile-menu" aria-expanded="false">
-        <span>Menú</span>
+        <span>{copy.menu}</span>
         <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 5h10M3 8h10M3 11h10"></path></svg>
       </button>
     </div>
   </div>
 
-  <nav id="mobile-menu" class="mobile-menu lg:hidden" data-mobile-menu aria-label="Navegación móvil" hidden>
+  <nav id="mobile-menu" class="mobile-menu lg:hidden" data-mobile-menu aria-label={copy.mobileNavigation} hidden>
     <ul class="shell grid grid-cols-2 border-t py-4">
-      <li><a href="#perfil">Perfil <span>01</span></a></li>
-      <li><a href="#experiencia">Experiencia <span>02</span></a></li>
-      <li><a href="#proyectos">Proyectos <span>03</span></a></li>
-      <li><a href="#stack">Stack <span>04</span></a></li>
-      <li><a href="#ia">IA <span>05</span></a></li>
-      <li><a href="#contacto">Contacto <span>06</span></a></li>
+      {sections.map((section, index) => (
+        <li><a href={section.href}>{section.label} <span>{String(index + 1).padStart(2, "0")}</span></a></li>
+      ))}
     </ul>
   </nav>
 </header>
 
 <script>
   const themeToggle = document.querySelector<HTMLButtonElement>("[data-theme-toggle]");
+  const languageLink = document.querySelector<HTMLAnchorElement>("[data-language-link]");
   const menuToggle = document.querySelector<HTMLButtonElement>("[data-menu-toggle]");
   const mobileMenu = document.querySelector<HTMLElement>("[data-mobile-menu]");
   const themeColor = document.querySelector<HTMLMetaElement>('meta[name="theme-color"]');
 
   const updateThemeLabel = () => {
     const isDark = document.documentElement.classList.contains("dark");
-    themeToggle?.setAttribute("aria-label", isDark ? "Activar modo claro" : "Activar modo oscuro");
+    const label = isDark ? themeToggle?.dataset.lightLabel : themeToggle?.dataset.darkLabel;
+    if (label) themeToggle?.setAttribute("aria-label", label);
+  };
+
+  const updateLanguageLink = () => {
+    if (!languageLink) return;
+    languageLink.href = `${languageLink.dataset.languagePath ?? "/"}${window.location.hash}`;
   };
 
   updateThemeLabel();
+  updateLanguageLink();
+  window.addEventListener("hashchange", updateLanguageLink);
 
   themeToggle?.addEventListener("click", () => {
     const isDark = document.documentElement.classList.toggle("dark");
