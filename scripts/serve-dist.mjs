@@ -42,6 +42,16 @@ async function findFile(pathname) {
 const server = createServer(async (request, response) => {
   try {
     const pathname = new URL(request.url ?? "/", `http://${host}:${port}`).pathname;
+
+    if (pathname === "/_vercel/insights/script.js") {
+      response.writeHead(200, {
+        "cache-control": "no-store",
+        "content-type": "text/javascript; charset=utf-8",
+      });
+      response.end("/* Vercel serves the Analytics loader in production. */");
+      return;
+    }
+
     const file = await findFile(pathname);
 
     if (!file) {

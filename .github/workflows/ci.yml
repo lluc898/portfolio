@@ -50,6 +50,9 @@ jobs:
       - name: Enforce Lighthouse budgets
         run: npm run check:lighthouse
 
+      - name: Validate Vercel Analytics integration
+        run: npm run check:analytics
+
       - name: Validate SEO metadata
         run: npm run check:seo
 

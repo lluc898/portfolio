@@ -1,6 +1,7 @@
 ---
 import "@fontsource-variable/inter";
 import "@fontsource-variable/jetbrains-mono";
+import Analytics from "@vercel/analytics/astro";
 import "../styles/global.css";
 
 interface Props {
@@ -100,6 +101,7 @@ const profileSchema = {
     <meta name="twitter:image:alt" content={socialImageAlt} />
 
     {includeProfileSchema && <script is:inline type="application/ld+json" set:html={JSON.stringify(profileSchema)} />}
+    <Analytics />
     <script is:inline>
       document.documentElement.classList.add("js");
       const savedTheme = localStorage.getItem("theme");
