@@ -1,0 +1,85 @@
+name: Retire legacy portfolio
+
+on:
+  workflow_dispatch:
+    inputs:
+      mode:
+        description: Action to run on the legacy server
+        required: true
+        type: choice
+        options:
+          - audit
+          - retire
+      delay_minutes:
+        description: Delay before retirement, allowing DNS caches to expire
+        required: true
+        default: "0"
+        type: string
+
+permissions:
+  contents: read
+
+jobs:
+  legacy-server:
+    name: Audit or retire legacy portfolio
+    runs-on: [self-hosted, Linux, X64, portfolio]
+    timeout-minutes: 90
+    env:
+      DEPLOY_ROOT: /home/lluc/apps/portfolio
+      DELAY_MINUTES: ${{ inputs.delay_minutes }}
+
+    steps:
+      - name: Validate exact deployment target
+        shell: bash
+        run: |
+          set -Eeuo pipefail
+          [[ "$(realpath "$DEPLOY_ROOT")" == "/home/lluc/apps/portfolio" ]]
+          [[ -f "$DEPLOY_ROOT/compose.yaml" ]]
+          docker compose --project-directory "$DEPLOY_ROOT" -f "$DEPLOY_ROOT/compose.yaml" ps portfolio
+          systemctl is-enabled llucbosch-cert-renew.timer || true
+          if sudo -n true 2>/dev/null; then
+            echo "Passwordless sudo is available."
+          else
+            echo "Passwordless sudo is not available."
+          fi
+
+      - name: Wait for DNS caches
+        if: inputs.mode == 'retire'
+        shell: bash
+        run: |
+          set -Eeuo pipefail
+          [[ "$DELAY_MINUTES" =~ ^[0-9]+$ ]]
+          (( DELAY_MINUTES <= 80 ))
+          sleep "${DELAY_MINUTES}m"
+
+      - name: Confirm production is served by Vercel
+        if: inputs.mode == 'retire'
+        shell: bash
+        run: |
+          set -Eeuo pipefail
+          resolved="$(getent ahostsv4 llucbosch.com | awk '{print $1}' | sort -u)"
+          printf 'Resolved IPv4 addresses:\n%s\n' "$resolved"
+          if grep -qx '85.59.119.150' <<<"$resolved"; then
+            echo "The legacy address is still cached; refusing to stop the service." >&2
+            exit 1
+          fi
+          curl --fail --silent --show-error --head --max-time 30 https://llucbosch.com/ | grep -qi '^server: Vercel'
+
+      - name: Stop only the legacy portfolio service
+        if: inputs.mode == 'retire'
+        shell: bash
+        run: |
+          set -Eeuo pipefail
+          docker compose --project-directory "$DEPLOY_ROOT" -f "$DEPLOY_ROOT/compose.yaml" stop portfolio
+          status="$(docker inspect --format '{{.State.Status}}' llucbosch-portfolio)"
+          [[ "$status" == "exited" ]]
+          echo "Legacy portfolio container stopped; files retained for rollback."
+
+      - name: Disable obsolete certificate renewal
+        if: inputs.mode == 'retire'
+        shell: bash
+        run: |
+          set -Eeuo pipefail
+          if systemctl list-unit-files llucbosch-cert-renew.timer --no-legend | grep -q '^llucbosch-cert-renew.timer'; then
+            sudo -n systemctl disable --now llucbosch-cert-renew.timer
+          fi
